@@ -2,15 +2,51 @@
 #include <stdlib.h>
 
 int main()
+/*
 {
+    int i;//indice
+    i=0;
+
+    while(i<10)
+    {
+        printf("numero: %d \n",(i+1));
+        i++;
+    }
+    return 0;
+}
+  */
+{
+
     int numero;
+    int contador=0;
 
-    printf("Ingrese un numero: ");
+   while(contador<6)
+    {
+    printf("Ingrese un numero: \n");
     scanf("%d", &numero);
+    if(numero<18)
+    {
+        printf("es menor de edad\n");
+    }
+    else if(numero>35){
 
-    printf("Usted ingreso el numero %d", numero);
+        printf("es una persona mayor\n");
+    }
 
-    /*int numero;
+    else
+        {
+        printf("es mayor de edad\n");
+        }
+    }
+    contador++;
+ }
+
+
+
+
+    /*
+   return 0;
+    int numero;
     int numero2;
     char letra;
     float altura;
@@ -27,7 +63,5 @@ int main()
     /*printf("La variable altura vale %d", numero2);*/
     /*printf("La variable altura vale %.0f", altura);*/
     /*printf("La variable letra vale %c", letra);*/
-    /*printf("La variable numero vale %d y numero2 vale %d", numero, numero2);*/
-
-    return 0;
-}
+    /*printf("La variable numero vale %d y numero2 vale %d", numero, numero2);
+    */
