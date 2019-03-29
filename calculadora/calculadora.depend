@@ -1,3 +1,9 @@
 # depslib dependency file v1.0
 1553696222 source:c:\users\alumno\desktop\c\factorial\factorial.c
 
+1553814169 source:c:\users\juan\desktop\c\calculadora\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<math.h>
+
