@@ -1,9 +1,9 @@
 # depslib dependency file v1.0
-1553696175 source:c:\users\alumno\desktop\c\factorial\main.c
+1553949318 source:c:\users\alumno\desktop\c\factorial\main.c
 	<stdio.h>
 	<stdlib.h>
 
-1553696222 source:c:\users\alumno\desktop\c\factorial\factorial.c
+1553947145 source:c:\users\alumno\desktop\c\factorial\factorial.c
 
 1553804119 source:c:\users\juan\desktop\c\factorial\factorial.c
 

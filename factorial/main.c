@@ -22,6 +22,7 @@ int main()
 
 
 /*
+int main()
 {
     int numero;
     int *n;

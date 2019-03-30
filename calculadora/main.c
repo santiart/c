@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <conio.h>
 #include <math.h>
+#include "factorial.h"
 
 int main()
 {
@@ -15,7 +16,7 @@ int main()
     int rfactoreo=1;
     do
     {
-        void clrscr(void);
+
         printf("\n       :: C A L C U L A D O R A::     ");
         printf("\n       1_ Suma            4_division  ");
         printf("\n       2_ Resta           5_factorial ");
@@ -55,7 +56,8 @@ int main()
             scanf("%d",&numero2);
             if(numero2!=0)
             {
-                resultadoDivision=numero1/numero2;
+                resultadoDivision=(float)numero1/numero2;
+                printf("el resultado de la division de %d/%d es: %.2f",numero1,numero2,resultadoDivision);
             }
             else
             {
@@ -75,6 +77,9 @@ int main()
             printf("      pulse ENTER para salir...      ");
         }
     getch();
+    printf("\n");
+    system("pause");
+    system("cls");
     }while(operacion!=6);
     return 0;
 }
