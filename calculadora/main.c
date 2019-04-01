@@ -14,6 +14,7 @@ int main()
     int i;
     int n=1;
     int rfactoreo=1;
+    int numero;
     do
     {
 
@@ -65,6 +66,11 @@ int main()
             }
             break;
         case 5:
+
+
+            obtenerFactorial();
+
+            /*
             printf("ingrese el numero que quiera factorizar: ");
             scanf("%d",&n);
             for(i=1;i<=n;i++)
@@ -73,6 +79,7 @@ int main()
             }
             printf("el resultado de factoreo de %d es: %d",n,rfactoreo);
             break;
+            */
         case 6:
             printf("      pulse ENTER para salir...      ");
         }

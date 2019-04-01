@@ -1,23 +1,34 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
+int obtenerFactorial(int x);
 int main()
 {
-    int i;
-    int n=1;
-    int resultado=1;
+    int num1;
+    int numero;
+
+
 
     printf("ingrese un numero: ");
-    scanf("%d",&n);
-    for(i=1;i<=n;i++)
-    {
-        resultado=resultado*i;
-    }
-    printf("el valor del factorial es: %d",resultado);
+    scanf("%d",&num1);
+
+    numero=obtenerFactorial(num1);
+    printf("el valor del factorial es: %d",numero);
+
     return 0;
 }
+int obtenerFactorial(int x)
+{
+    int i;
+    int x1=1;
+    int resultadof=1;
+    for(i=1;i<=x1;i++)
+    {
+        resultadof=resultadof*i;
+    }
 
+    return resultadof;
+}
 
 
 

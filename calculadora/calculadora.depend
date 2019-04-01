@@ -7,14 +7,16 @@
 	<conio.h>
 	<math.h>
 
-1553951185 source:c:\users\alumno\desktop\c\calculadora\main.c
+1554137470 source:c:\users\alumno\desktop\c\calculadora\main.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
 	<math.h>
 	"factorial.h"
 
-1553947145 source:c:\users\alumno\desktop\c\calculadora\factorial.c
+1554136996 source:c:\users\alumno\desktop\c\calculadora\factorial.c
 
-1553947145 c:\users\alumno\desktop\c\calculadora\factorial.h
+1554137591 c:\users\alumno\desktop\c\calculadora\factorial.h
+	<stdio.h>
+	<stdlib.h>
 
