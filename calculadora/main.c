@@ -67,8 +67,10 @@ int main()
             break;
         case 5:
 
-
-            obtenerFactorial();
+            printf("ingrese el numero que quiere factorizar: ");
+            scanf("%d",&numero1);
+            resultado=obtenerFactorial(numero1);
+            printf("el resultado del factorial de %d es %d", numero1,resultado);
 
             /*
             printf("ingrese el numero que quiera factorizar: ");

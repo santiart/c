@@ -1,22 +1,12 @@
 # depslib dependency file v1.0
-1553696222 source:c:\users\alumno\desktop\c\factorial\factorial.c
+1554148190 source:c:\users\juan\desktop\c\calculadora\factorial.c
 
-1553814169 source:c:\users\juan\desktop\c\calculadora\main.c
-	<stdio.h>
-	<stdlib.h>
-	<conio.h>
-	<math.h>
-
-1554137470 source:c:\users\alumno\desktop\c\calculadora\main.c
+1554148748 source:c:\users\juan\desktop\c\calculadora\main.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
 	<math.h>
 	"factorial.h"
 
-1554136996 source:c:\users\alumno\desktop\c\calculadora\factorial.c
-
-1554137591 c:\users\alumno\desktop\c\calculadora\factorial.h
-	<stdio.h>
-	<stdlib.h>
+1554148458 c:\users\juan\desktop\c\calculadora\factorial.h
 

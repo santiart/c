@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
 int obtenerFactorial(int x);
 int main()
 {
@@ -20,9 +21,8 @@ int main()
 int obtenerFactorial(int x)
 {
     int i;
-    int x1=1;
     int resultadof=1;
-    for(i=1;i<=x1;i++)
+    for(i=1;i<=x;i++)
     {
         resultadof=resultadof*i;
     }
