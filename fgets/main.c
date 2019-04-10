@@ -9,7 +9,8 @@ int main()
 
     printf("Nombre: ");
     //fgets(buffer, 62, stdin);
-    fgets(buffer,sizeof(buffer)-2,stdin);
+    fgets(buffer,sizeof(buffer)-2j
+          ,stdin);
 
     cantidad = strlen(buffer);
 
