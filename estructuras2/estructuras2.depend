@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1555015925 source:c:\users\juan\desktop\santiago\tp\estructuras2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+

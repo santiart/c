@@ -13,7 +13,9 @@ struct datosPersonales
 
 int main()
 {
-        struct datosPersonales vecAgenda[TAM];
+    printf("               ::   A G E N D A  ::                 ");
+
+    struct datosPersonales vecAgenda[TAM];
     int i;
 
     for(i=0; i<TAM; i++)
