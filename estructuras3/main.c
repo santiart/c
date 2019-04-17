@@ -88,8 +88,8 @@ int main()
 
 void inicializarEmpleados(eEmpleado vec[], int tam)
 {
-
-    for(int i=0; i < tam; i++)
+    int i;
+    for( i=0; i < tam; i++)
     {
         vec[i].ocupado = 0;
     }
@@ -123,9 +123,10 @@ void mostrarEmpleado(eEmpleado emp)
 void mostrarEmpleados(eEmpleado vec[], int tam)
 {
     int contador = 0;
+    int i;
 
     printf(" Legajo   Nombre  Sexo  Sueldo\n\n");
-    for(int i=0; i < tam; i++)
+    for( i=0; i < tam; i++)
     {
         if(vec[i].ocupado == 1)
         {
@@ -133,7 +134,6 @@ void mostrarEmpleados(eEmpleado vec[], int tam)
             contador++;
         }
     }
-
     if( contador == 0)
     {
         printf("\nNo hay empleados que mostrar\n");
@@ -144,8 +144,9 @@ int buscarLibre(eEmpleado vec[], int tam)
 {
 
     int indice = -1;
+    int i;
 
-    for(int i=0; i < tam; i++)
+    for( i=0; i < tam; i++)
     {
         if(vec[i].ocupado == 0)
         {
@@ -161,8 +162,9 @@ int buscarEmpleado(eEmpleado vec[], int tam, int legajo)
 {
 
     int indice = -1;
+    int i;
 
-    for(int i=0; i < tam; i++)
+    for( i=0; i < tam; i++)
     {
         if(vec[i].ocupado == 1 && vec[i].legajo == legajo)
         {

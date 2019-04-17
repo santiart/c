@@ -1,16 +1,26 @@
 # depslib dependency file v1.0
-1555330277 source:c:\users\alumno\desktop\c\tp empleados\main.c
+1555505736 source:c:\users\alumno\desktop\c\tp empleados\main.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
-	"menu.h"
 
-1555330299 c:\users\alumno\desktop\c\tp empleados\menu.h
+1555502937 c:\users\alumno\desktop\c\tp empleados\menu.h
 	<stdio.h>
 	<stdlib.h>
 
-1555330349 source:c:\users\alumno\desktop\c\tp empleados\menu.c
+1555502376 source:c:\users\alumno\desktop\c\tp empleados\menu.c
 	<stdio.h>
 	<stdlib.h>
 	"menu.h"
+
+1555504998 source:c:\users\alumno\desktop\c\tp empleados\empleado.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	"empleado.h"
+
+1555505260 c:\users\alumno\desktop\c\tp empleados\empleado.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
 
