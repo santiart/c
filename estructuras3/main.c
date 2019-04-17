@@ -113,35 +113,42 @@ int menu()
     return opcion;
 }
 
-void mostrarEmpleado(eEmpleado emp){
+void mostrarEmpleado(eEmpleado emp)
+{
 
     printf("   %d       %10s     %c    %.2f\n", emp.legajo, emp.nombre, emp.sexo, emp.sueldo);
 
 }
 
-void mostrarEmpleados(eEmpleado vec[], int tam){
+void mostrarEmpleados(eEmpleado vec[], int tam)
+{
     int contador = 0;
 
     printf(" Legajo   Nombre  Sexo  Sueldo\n\n");
-    for(int i=0; i < tam; i++){
-        if(vec[i].ocupado == 1){
+    for(int i=0; i < tam; i++)
+    {
+        if(vec[i].ocupado == 1)
+        {
             mostrarEmpleado(vec[i]);
             contador++;
         }
     }
 
-    if( contador == 0){
+    if( contador == 0)
+    {
         printf("\nNo hay empleados que mostrar\n");
     }
 }
 
-int buscarLibre(eEmpleado vec[], int tam){
+int buscarLibre(eEmpleado vec[], int tam)
+{
 
     int indice = -1;
 
-     for(int i=0; i < tam; i++)
+    for(int i=0; i < tam; i++)
     {
-        if(vec[i].ocupado == 0){
+        if(vec[i].ocupado == 0)
+        {
             indice = i;
             break;
         }
@@ -150,13 +157,15 @@ int buscarLibre(eEmpleado vec[], int tam){
     return indice;
 }
 
-int buscarEmpleado(eEmpleado vec[], int tam, int legajo){
+int buscarEmpleado(eEmpleado vec[], int tam, int legajo)
+{
 
     int indice = -1;
 
-     for(int i=0; i < tam; i++)
+    for(int i=0; i < tam; i++)
     {
-        if(vec[i].ocupado == 1 && vec[i].legajo == legajo){
+        if(vec[i].ocupado == 1 && vec[i].legajo == legajo)
+        {
             indice = i;
             break;
         }
@@ -165,55 +174,55 @@ int buscarEmpleado(eEmpleado vec[], int tam, int legajo){
     return indice;
 }
 
-void altaEmpleado(eEmpleado vec[], int tam){
+void altaEmpleado(eEmpleado vec[], int tam)
+{
 
-int indice;
-int legajo;
-int esta;
-
-
-indice = buscarLibre(vec, tam);
-
-if( indice == -1){
-
-    printf("\nNo hay lugar en el sistema\n");
-}
-else{
-     printf("Ingrese legajo: ");
-     scanf("%d", &legajo);
-
-     esta = buscarEmpleado(vec, tam, legajo);
-
-     if( esta != -1){
-        printf("Existe un empleado de legajo %d en el sistema\n", legajo);
-        mostrarEmpleado(vec[esta]);
-     }
-     else{
-        vec[indice].legajo = legajo;
-
-        printf("Ingrese nombre: ");
-        fflush(stdin);
-        gets(vec[indice].nombre);
-
-        printf("Ingrese sexo: ");
-        fflush(stdin);
-        scanf("%c", &vec[indice].sexo );
-
-        printf("Ingrese sueldo: ");
-        scanf("%f", &vec[indice].sueldo );
-
-        vec[indice].ocupado = 1;
-
-        printf("Alta empleado exitosa!!!\n\n");
-
-     }
-
-}
+    int indice;
+    int legajo;
+    int esta;
 
 
+    indice = buscarLibre(vec, tam);
 
+    if( indice == -1)
+    {
 
+        printf("\nNo hay lugar en el sistema\n");
+    }
+    else
+    {
+        printf("Ingrese legajo: ");
+        scanf("%d", &legajo);
 
+        esta = buscarEmpleado(vec, tam, legajo);
+
+        if( esta != -1)
+        {
+            printf("Existe un empleado de legajo %d en el sistema\n", legajo);
+            mostrarEmpleado(vec[esta]);
+        }
+        else
+        {
+            vec[indice].legajo = legajo;
+
+            printf("Ingrese nombre: ");
+            fflush(stdin);
+            gets(vec[indice].nombre);
+
+            printf("Ingrese sexo: ");
+            fflush(stdin);
+            scanf("%c", &vec[indice].sexo );
+
+            printf("Ingrese sueldo: ");
+            scanf("%f", &vec[indice].sueldo );
+
+            vec[indice].ocupado = 1;
+
+            printf("Alta empleado exitosa!!!\n\n");
+
+        }
+
+    }
 
 }
 
