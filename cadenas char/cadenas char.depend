@@ -11,3 +11,18 @@
 	<string.h>
 	<ctype.h>
 
+1556059271 source:c:\users\juan\desktop\c\cadenas char\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
+1556058973 source:c:\users\juan\desktop\c\cadenas char\menu.c
+	<stdio.h>
+	<stdlib.h>
+	"menu.h"
+
+1556058635 c:\users\juan\desktop\c\cadenas char\menu.h
+	<stdio.h>
+	<stdlib.h>
+
