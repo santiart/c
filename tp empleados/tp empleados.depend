@@ -1,8 +1,10 @@
 # depslib dependency file v1.0
-1555940178 source:c:\users\alumno\desktop\c\tp empleados\main.c
+1556118694 source:c:\users\alumno\desktop\c\tp empleados\main.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
+	<string.h>
+	<ctype.h>
 
 1555502937 c:\users\alumno\desktop\c\tp empleados\menu.h
 	<stdio.h>
