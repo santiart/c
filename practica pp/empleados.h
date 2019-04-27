@@ -38,6 +38,14 @@ int buscarEmpleado(eEmpleado vec [], int tam, int legajo);
 void altaEmpleado(eEmpleado vec[], int tam, eSector sectores[], int tamSector);
 void modificarEmpleado(eEmpleado vec[], int tam, eSector sectores[],int tamSector);
 void bajaEmpleado(eEmpleado vec[], int tam, eSector sectores[], int tamSector);
-void ordenarEmpleados(eEmpleado vec[], int tam, eSector sectores[], int tamSector);
+void ordenarEmpleados(eEmpleado vec[], int tam, eSector sectores[], int tamSector, int sentido);
 
 
+void inicializarMenues(eAlmuerzo vec[],int tam);
+void mostrarMenu(int tam, eAlmuerzo emp);
+void mostrarMenues(eAlmuerzo vec[], int tam);
+int buscarLibre(eAlmuerzo vec[],int tam);
+void altaMenu(eAlmuerzo vec[], int tam);
+void modificarMenu(eAlmuerzo vec[], int tam);
+void bajaMenu(eAlmuerzo vec[], int tam);
+void ordenarMenues(eAlmuerzo vec[], int tam, int sentido);

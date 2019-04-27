@@ -212,23 +212,34 @@ void bajaEmpleado(eEmpleado vec[], int tam, eSector sectores[], int tamSector)
     }
 }
 
-void ordenarEmpleados(eEmpleado vec[], int tam, eSector sectores[], int tamSector)
+/** \brief
+ *
+ * \param vec[] eEmpleado
+ * \param tam int
+ * \param sectores[] eSector
+ * \param tamSector int
+ * \param sentido int indica el orden sentidio del orden, siendo 0 ascendente y 1 descendente
+ * \return void
+ *
+ */
+void ordenarEmpleados(eEmpleado vec[], int tam, eSector sectores[], int tamSector, int sentido)
 {
     int i;
     int j;
-    int auxInt;
-
-    for(i = 0 ; i < tam ; i++)
+    eEmpleado auxInt;
+    char auxChar;
+    float auxFloat;
+    sentido;
+    for(i = 0 ; i < tam - 1  ; i++)
     {
-        for(j = 0 ; j < tam ; j++)
+        for(j = i + 1 ; j < tam  ; j++)
         {
-            if(vec[i].legajo> vec[j].legajo)
+            if(( sentido && vec[i].legajo < vec[j].legajo )
+               || (!sentido && vec[i].legajo > vec[j].legajo))
             {
-                auxInt = vec[i].legajo;
-                vec[i].legajo = vec[j].legajo;
-                vec[j].legajo = auxInt;
-
-
+                auxInt = vec[i];
+                vec[i] = vec[j];
+                vec[j] = auxInt;
             }
         }
     }

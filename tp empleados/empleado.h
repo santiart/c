@@ -2,11 +2,11 @@
 #include <stdlib.h>
 #include <conio.h>
 
-
 typedef struct
 {
-    int dia, mes,anio;
-}eFecha;
+    int id;
+    char desc[20];
+} eSector;
 
 typedef struct
 {
@@ -16,14 +16,19 @@ typedef struct
     char sexo;
     float sueldo;
     int estado;
-    eFecha fechaNac;
+    int idSector;
 } eEmpleado;
 
 
 void inicializarEmpleados(eEmpleado vec[],int tam);
-void mostrarEmpleado(eEmpleado emp);
-void mostrarEmpleados(eEmpleado vec[],int tam);
+void mostrarEmpleado(eSector sectores[], int tam, eEmpleado emp);
+void mostrarEmpleados(eEmpleado vec[], int tam, eSector sectores[], int tamSector);
 int buscarLibre(eEmpleado vec[],int tam);
 int buscarEmpleado(eEmpleado vec [], int tam, int legajo);
-void altaDeEmpleado(eEmpleado vec [], int tam);
-void modificarEmpleado(eEmpleado vec [], int tam);
+void altaEmpleado(eEmpleado vec[], int tam, eSector sectores[], int tamSector);
+void modificarEmpleado(eEmpleado vec[], int tam, eSector sectores[],int tamSector);
+void bajaEmpleado(eEmpleado vec[], int tam, eSector sectores[], int tamSector);
+void ordenarEmpleados(eEmpleado vec[], int tam, eSector sectores[], int tamSector, int sentido);
+int obtenerSector(eSector sectores[], int tam, int id, char desc[]);
+void mostrarSectoresConEmpleados(eEmpleado empleados[], int tam, eSector sectores[], int tamSec);
+void mostrarCantEmpleadosXSector(eEmpleado empleados[], int tam, eSector sectores[], int tamSec);
