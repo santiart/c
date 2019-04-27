@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
+#include <string.h>
+#include <ctype.h>
 #include "empleado.h"
 
 
@@ -360,7 +362,6 @@ void bajaEmpleado(eEmpleado vec[], int tam, eSector sectores[], int tamSector)
     int indice;
     int esta;
     int legajo;
-    char seguir='s';
     char confirmar;
 
     indice=buscarLibre(vec, tam);
@@ -384,9 +385,8 @@ void bajaEmpleado(eEmpleado vec[], int tam, eSector sectores[], int tamSector)
             fflush(stdin);
             confirmar=getche();
 
-            if( tolower(confirmar)== 's')
+            if( tolower(confirmar== 's'))
             {
-                seguir='n';
                 vec[esta].legajo=legajo;
 
                 vec[esta].estado=0;

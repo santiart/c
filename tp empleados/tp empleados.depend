@@ -16,10 +16,12 @@
 	<stdlib.h>
 	"menu.h"
 
-1556388739 source:c:\users\alumno\desktop\c\tp empleados\empleado.c
+1556389653 source:c:\users\alumno\desktop\c\tp empleados\empleado.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
+	<string.h>
+	<ctype.h>
 	"empleado.h"
 
 1556387877 c:\users\alumno\desktop\c\tp empleados\empleado.h
