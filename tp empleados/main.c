@@ -23,13 +23,7 @@ int main()
         {5,"legales"},
     };
     eEmpleado lista[TAM];
-    /*
-    {
-        {1111,"juan", "perez", 'm', 53000,1,1},
-        {2222,"ana", "sanchez",'f', 40000,1,2},
-        {3333,"pablo","dominguez",'m',38000,1,4}
-    }; //hardcodeo
-    */
+
     inicializarEmpleados(lista, TAM);
 
     do

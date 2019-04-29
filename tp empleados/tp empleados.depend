@@ -29,7 +29,18 @@
 	<stdlib.h>
 	<conio.h>
 
-1556247375 source:c:\users\juan\desktop\c\tp empleados\main.c
+1556483040 source:c:\users\juan\desktop\c\tp empleados\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	<ctype.h>
+	"empleado.h"
+
+1556504101 source:c:\users\juan\desktop\c\tp empleados\empleado.c
+	"empleado.h"
+
+1556504122 c:\users\juan\desktop\c\tp empleados\empleado.h
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
