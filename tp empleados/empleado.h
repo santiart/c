@@ -1,3 +1,6 @@
+#ifndef Empleado_H_INCLUDED
+#define Empleado_H_INCLUDED
+
 #ifndef Sector_H_INCLUDED
 #define Sector_H_INCLUDED
 #include "sectores.h"
@@ -27,4 +30,5 @@ void altaEmpleado(eEmpleado vec[], int tam, eSector sectores[], int tamSector);
 void modificarEmpleado(eEmpleado vec[], int tam, eSector sectores[],int tamSector);
 void bajaEmpleado(eEmpleado vec[], int tam, eSector sectores[], int tamSector);
 void ordenarEmpleados(eEmpleado vec[], int tam, eSector sectores[], int tamSector, int sentido);
-
+#endif // Empleado_H_INCLUDED
+#endif // Sector_H_INCLUDED

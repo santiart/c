@@ -92,4 +92,5 @@ int main()
 
     return 0;
 }
-
+#endif // Sector_H_INCLUDED
+#endif // Empleado_h_INCLUDED
