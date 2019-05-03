@@ -1,9 +1,14 @@
+#ifndef Empleado_h_INCLUDED
+#define Empleado_h_INCLUDED
+#ifndef Sector_H_INCLUDED
+#define Sector_H_INCLUDED
+#include "empleado.h"
+#include "sectores.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
 #include <string.h>
 #include <ctype.h>
-#include "empleado.h"
 #define  TAM 4
 #define TAMSEC 5
 
