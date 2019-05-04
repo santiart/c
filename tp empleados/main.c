@@ -1,20 +1,20 @@
 #ifndef Empleado_h_INCLUDED
 #define Empleado_h_INCLUDED
-#ifndef Sector_H_INCLUDED
-#define Sector_H_INCLUDED
 #include "empleado.h"
-#include "sectores.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
 #include <string.h>
 #include <ctype.h>
-#define  TAM 4
 #define TAMSEC 5
 
 
 int main()
 {
+    int tamanio;
+    printf("        :: L I S T A  D E  E M P L E A D O S ::       \n");
+    printf("ingrese el tamanio de la lista: \n");
+    scanf("%d",&tamanio);
     int opcion;
     char seguir='s';
     char confirmar;
@@ -27,9 +27,9 @@ int main()
         {4,"ventas"},
         {5,"legales"},
     };
-    eEmpleado lista[TAM];
+    eEmpleado lista[tamanio];
 
-    inicializarEmpleados(lista, TAM);
+    inicializarEmpleados(lista, tamanio);
 
     do
     {
@@ -44,32 +44,32 @@ int main()
         switch(opcion)
         {
         case 1:
-            altaEmpleado(lista, TAM,sectores,TAMSEC);
+            altaEmpleado(lista, tamanio,sectores,TAMSEC);
             system("pause");
             break;
         case 2:
-            bajaEmpleado(lista,TAM,sectores,TAMSEC);
+            bajaEmpleado(lista,tamanio,sectores,TAMSEC);
             system("pause");
             break;
         case 3:
-            modificarEmpleado(lista,TAM,sectores,TAMSEC);
+            modificarEmpleado(lista,tamanio,sectores,TAMSEC);
             system("pause");
             break;
 
         case 4:
-            ordenarEmpleados(lista,TAM, sectores, TAMSEC, sentidoA );
+            ordenarEmpleados(lista,tamanio, sectores, TAMSEC, sentidoA );
             system("pause");
             break;
         case 5:
-            mostrarEmpleados(lista, TAM, sectores, TAMSEC);
+            mostrarEmpleados(lista, tamanio, sectores, TAMSEC);
             system("pause");
             break;
         case 6:
-            mostrarSectoresConEmpleados(lista, TAM, sectores, TAMSEC);
+            mostrarSectoresConEmpleados(lista, tamanio, sectores, TAMSEC);
             system("pause");
             break;
         case 7:
-            mostrarCantEmpleadosXSector(lista,TAM,sectores,TAMSEC);
+            mostrarCantEmpleadosXSector(lista,tamanio,sectores,TAMSEC);
             system("pause");
             break;
         case 8:
@@ -92,5 +92,4 @@ int main()
 
     return 0;
 }
-#endif // Sector_H_INCLUDED
 #endif // Empleado_h_INCLUDED
