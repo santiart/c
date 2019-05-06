@@ -54,10 +54,11 @@ void mostrarCantEmpleadosXSector(eEmpleado empleados[], int tam, eSector sectore
         {
             if((sectores[i].id == empleados[j].idSector)&&(empleados[j].estado == 1))
             {
-                //mostrarEmpleado(sectores,tamSec,empleados[j]);
+                mostrarEmpleado(sectores,tamSec,empleados[j]);
                 contador++;
             }
         }
         printf("Cantidad de empleados: %d\n\n",contador);
     }
 }
+

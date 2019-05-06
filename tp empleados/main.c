@@ -7,10 +7,12 @@
 #include <string.h>
 #include <ctype.h>
 #define TAMSEC 5
+//#define TAM 3
 
 
 int main()
 {
+
     int tamanio;
     printf("        :: L I S T A  D E  E M P L E A D O S ::       \n");
     printf("ingrese el tamanio de la lista: \n");
