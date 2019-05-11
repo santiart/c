@@ -398,13 +398,13 @@ void listarEmpleados(eEmpleado vec[], int tam, eSector sector[], int tamSector)
     int opcion;
     char auxOpcion[50];
     char confirmar;
-    char seguir;
+    char seguir = 's';
 
     do
     {
         system("cls");
         printf(" 1_Mostrar informacion de empleados\n 2_Mostrar informacion de salarios\n 3_Salir...\n");
-        while(!getStringNumeros("ingrese una opcion: \n",auxOpcion ));
+        while(!getStringNumeros("ingrese una opcion: \n",auxOpcion ))
         {
             printf("intente de nuevo...\n");
         }
@@ -414,9 +414,11 @@ void listarEmpleados(eEmpleado vec[], int tam, eSector sector[], int tamSector)
             case 1:
                 ordenarEmpleados(vec,tam);
                 mostrarEmpleados(vec,tam, sector, tamSector);
+                system("pause");
                 break;
             case 2:
                 informarSueldos(vec,tam);
+                system("pause");
                 break;
             case 3:
                 printf("\n confirmar salida s/n?...\n");
@@ -429,9 +431,8 @@ void listarEmpleados(eEmpleado vec[], int tam, eSector sector[], int tamSector)
                 }
 
                 break;
-
             default:
-                printf("\n Opcion invalida, intente de nuevo...");
+                printf("\n Opcion invalida, intente de nuevo...\n");
                 system("pause");
                 system("break");
             break;
