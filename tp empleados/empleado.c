@@ -172,124 +172,106 @@ void modificarEmpleado(eEmpleado vec[], int tam, eSector sectores[],int tamSecto
 
             switch(opcion)
             {
-            case 1:
-                printf("\n usted ha seleccionado al empleado : \n");
-                mostrarEmpleado(sectores,tamSector,vec[esta]);
 
-                vec[esta].id = id;
-                while(!getStringNumeros("ingrese el nuevo legajo: \n", auxId))
-                {
+                case 1:
+                    printf("\n usted ha seleccionado al empleado : \n");
+                    mostrarEmpleado(sectores,tamSector,vec[esta]);
+
+                    vec[esta].id = id;
+
+                    while(!getStringLetras("ingrese el nombre: \n", auxNombre))
+                    {
                         printf("intente de nuevo...\n");
+                    }
+
+                    strcpy(vec[esta].nombre, auxNombre);
+
+                    printf("Modifiacion de empleado exitosa!!!\n\n");
+
+                    vec[esta].estado = 1;
+                    system("pause");
+                    break;
+
+                case 2:
+                    printf("\n usted ha seleccionado al empleado : \n");
+                    mostrarEmpleado(sectores,tamSector,vec[esta]);
+
+                    vec[esta].id = id;
+
+                    while(!getStringNumeros("ingrese el sueldo: \n", auxSueldo))
+                    {
+                        printf("intente de nuevo...\n");
+                    }
+                    vec[esta].sueldo = atoi(auxSueldo);
+
+                    printf("Modifiacion de empleado exitosa!!!\n\n");
+
+                    vec[esta].estado = 1;
+                    system("pause");
+                    break;
+
+                case 3:
+                    printf("\n usted ha seleccionado al empleado : \n");
+                    mostrarEmpleado(sectores,tamSector,vec[esta]);
+
+                    vec[esta].id = id;
+
+                    while(!getStringLetras("ingrese el apellido: \n", auxApellido))
+                    {
+                        printf("intente de nuevo...\n");
+                    }
+                    strcpy(vec[esta].apellido, auxApellido);
+
+                    printf("Modifiacion de empleado exitosa!!!\n\n");
+
+                    vec[esta].estado = 1;
+                    system("pause");
+                    break;
+
+                case 4:
+                    printf("\n usted ha seleccionado al empleado : \n");
+                    mostrarEmpleado(sectores,tamSector,vec[esta]);
+
+                    vec[esta].id = id;
+
+                    while(!getStringNumeros("ingrese el sector: \n( 1,sistemas \n 2,RRHH \n 3,compras \n 4,ventas \n 5,legales) \n", auxSector))
+                    {
+                        printf("intente de nuevo...\n ");
+                    }
+
+                    vec[esta].Sector = atoi(auxSector);
+
+                    printf("Modifiacion de empleado exitosa!!!\n\n");
+
+                    vec[esta].estado = 1;
+                    system("pause");
+                    break;
+
+                case 5:
+                    printf("\n confirmar salida s/n?...\n");
+                    fflush(stdin);
+                    confirmar = getche();
+
+                    if( tolower(confirmar)== 's')
+                    {
+                        seguir = 'n';
+                    }
+                    break;
+
+                default:
+                    printf("\n Opcion invalida, intente de nuevo...");
+                    system("pause");
+                    system("break");
+
                 }
-                id = atoi(auxId);
-
-                vec[esta].id = id;
-
-                printf("Modifiacion de empleado exitosa!!!\n\n");
-
-                vec[esta].estado = 1;
-                system("pause");
-                break;
-
-            case 2:
-                printf("\n usted ha seleccionado al empleado : \n");
-                mostrarEmpleado(sectores,tamSector,vec[esta]);
-
-                vec[esta].id = id;
-
-                while(!getStringNumeros("ingrese el sueldo: \n", auxSueldo))
-                {
-                    printf("intente de nuevo...\n");
-                }
-                vec[esta].sueldo = atoi(auxSueldo);
-
-                printf("Modifiacion de empleado exitosa!!!\n\n");
-
-                vec[esta].estado = 1;
-                system("pause");
-                break;
-
-            case 3:
-                printf("\n usted ha seleccionado al empleado : \n");
-                mostrarEmpleado(sectores,tamSector,vec[esta]);
-
-                vec[esta].id = id;
-
-                while(!getStringLetras("ingrese el nombre: \n", auxNombre))
-                {
-                    printf("intente de nuevo...\n");
-                }
-
-                strcpy(vec[esta].nombre, auxNombre);
-
-                printf("Modifiacion de empleado exitosa!!!\n\n");
-
-                vec[esta].estado = 1;
-                system("pause");
-                break;
-
-            case 4:
-                printf("\n usted ha seleccionado al empleado : \n");
-                mostrarEmpleado(sectores,tamSector,vec[esta]);
-
-                vec[esta].id = id;
-
-                while(!getStringLetras("ingrese el apellido: \n", auxApellido))
-                {
-                    printf("intente de nuevo...\n");
-                }
-                strcpy(vec[esta].apellido, auxApellido);
-
-                printf("Modifiacion de empleado exitosa!!!\n\n");
-
-                vec[esta].estado = 1;
-                system("pause");
-                break;
-
-            case 5:
-                printf("\n usted ha seleccionado al empleado : \n");
-                mostrarEmpleado(sectores,tamSector,vec[esta]);
-
-                vec[esta].id = id;
-
-                while(!getStringNumeros("ingrese el sector: \n( 1,sistemas \n 2,RRHH \n 3,compras \n 4,ventas \n 5,legales) \n", auxSector))
-                {
-                    printf("intente de nuevo...\n ");
-                }
-
-                vec[esta].Sector = atoi(auxSector);
-
-                printf("Modifiacion de empleado exitosa!!!\n\n");
-
-                vec[esta].estado = 1;
-                system("pause");
-                break;
-
-            case 6:
-                printf("\n confirmar salida s/n?...\n");
-                fflush(stdin);
-                confirmar = getche();
-
-                if( tolower(confirmar)== 's')
-                {
-                    seguir = 'n';
-                }
-                break;
-
-            default:
-                printf("\n Opcion invalida, intente de nuevo...");
-                system("pause");
-                system("break");
-
             }
-        }
-        while(seguir == 's');
+            while(seguir == 's');
 
-    }
-    else
-    {
-        printf("no hay ningun empleado ingresado con ese id...\n");
-    }
+        }
+        else
+        {
+            printf("no hay ningun empleado ingresado con ese id...\n");
+        }
 }
 
 void bajaEmpleado(eEmpleado vec[], int tam, eSector sectores[], int tamSector)
@@ -420,13 +402,13 @@ void listarEmpleados(eEmpleado vec[], int tam, eSector sector[], int tamSector)
 
     do
     {
-        printf("1_Mostrar informacion de empleados\n 2_Mostrar informacion de salarios\n 3_Salir...\n");
+        system("cls");
+        printf(" 1_Mostrar informacion de empleados\n 2_Mostrar informacion de salarios\n 3_Salir...\n");
         while(!getStringNumeros("ingrese una opcion: \n",auxOpcion ));
         {
             printf("intente de nuevo...\n");
         }
         opcion = atoi(auxOpcion);
-
         switch(opcion)
         {
             case 1:
@@ -435,7 +417,6 @@ void listarEmpleados(eEmpleado vec[], int tam, eSector sector[], int tamSector)
                 break;
             case 2:
                 informarSueldos(vec,tam);
-                system("pause");
                 break;
             case 3:
                 printf("\n confirmar salida s/n?...\n");

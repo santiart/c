@@ -27,7 +27,7 @@
 	<string.h>
 	<ctype.h>
 
-1557536841 source:c:\users\juan\desktop\c\tp empleados\main.c
+1557538643 source:c:\users\juan\desktop\c\tp empleados\main.c
 	"empleado.h"
 	<stdio.h>
 	<stdlib.h>
@@ -39,7 +39,7 @@
 	"empleado.h"
 	"input.h"
 
-1557536810 c:\users\juan\desktop\c\tp empleados\empleado.h
+1557537708 c:\users\juan\desktop\c\tp empleados\empleado.h
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
@@ -60,18 +60,18 @@
 	<stdio.h>
 	<stdlib.h>
 
-1557097934 source:c:\users\juan\desktop\c\tp empleados\input.c
+1557537708 source:c:\users\juan\desktop\c\tp empleados\input.c
 	"input.h"
 
-1557095151 c:\users\juan\desktop\c\tp empleados\input.h
+1557537708 c:\users\juan\desktop\c\tp empleados\input.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<ctype.h>
 
-1557086063 c:\users\juan\desktop\c\tp empleados\sectores.h
+1557537708 c:\users\juan\desktop\c\tp empleados\sectores.h
 	"empleado.h"
 
-1557527388 source:c:\users\juan\desktop\c\tp empleados\sectores.c
+1557537708 source:c:\users\juan\desktop\c\tp empleados\sectores.c
 	"sectores.h"
 

@@ -34,7 +34,7 @@ int main()
         system("cls");
         printf("         ::A B M      E M P L E A D O S::      \n\n");
         printf(" 1- Alta Empleado\n 2- Baja Empleado\n 3- Modificacion Empleado\n 4- Listar Empleados \n 5- Salir\n\n");
-        while(!getStringNumeros("ingrese la opcion: \n", auxOpcion))
+        while(!getStringNumeros("ingrese una opcion: \n", auxOpcion))
         {
             printf("intente de nuevo...\n");
         }
