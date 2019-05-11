@@ -28,7 +28,7 @@ void mostrarSectoresConEmpleados(eEmpleado empleados[], int tam, eSector sectore
         printf("Sector:  %s \n\n",sectores[i].desc);
         for(j=0; j<tam; j++)
         {
-            if((empleados[j].idSector==sectores[i].id)&&(empleados[j].estado==1))
+            if((empleados[j].Sector==sectores[i].id)&&(empleados[j].estado==1))
             {
                 mostrarEmpleado(sectores,tamSec,empleados[j]);
             }
@@ -52,7 +52,7 @@ void mostrarCantEmpleadosXSector(eEmpleado empleados[], int tam, eSector sectore
 
         for(j=0 ; j<tam ; j++)
         {
-            if((sectores[i].id == empleados[j].idSector)&&(empleados[j].estado == 1))
+            if((sectores[i].id == empleados[j].Sector)&&(empleados[j].estado == 1))
             {
                 mostrarEmpleado(sectores,tamSec,empleados[j]);
                 contador++;

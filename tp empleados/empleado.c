@@ -17,18 +17,19 @@ void mostrarEmpleado(eSector sectores[], int tam, eEmpleado emp)
     char nombreSector[20];
     char consigioNombre;
 
-    consigioNombre=obtenerSector(sectores,tam, emp.idSector, nombreSector);
+    consigioNombre=obtenerSector(sectores,tam, emp.Sector, nombreSector);
     if(!consigioNombre)
     {
         strcpy(nombreSector,"Sin Definir");
     }
-    printf("\n%d    %10s      %10s    %10s    %10.2f   %10s\n ",emp.legajo, emp.nombre, emp.apellido, emp.sexo, emp.sueldo,nombreSector);
+    printf("\n%d    %10s      %10s     %10.2f   %10s\n ",emp.id, emp.nombre, emp.apellido, emp.sueldo,nombreSector);
 }
 
 void mostrarEmpleados(eEmpleado vec[], int tam, eSector sectores[], int tamSector)
 {
     int i;
     int contador = 0;
+
     printf("\nLegajo        Nombre         Apellido          Sexo   Sueldo       Sector  \n\n");
     for(i = 0; i < tam; i++)
     {
@@ -60,14 +61,14 @@ int buscarLibre(eEmpleado vec[], int tam)
     return indice;
 }
 
-int buscarEmpleado(eEmpleado vec [], int tam, int legajo)
+int buscarEmpleado(eEmpleado vec [], int tam, int id)
 {
     int i;
     int indice = -1;
 
     for(i = 0; i < tam; i++)
     {
-        if((vec[i].estado == 1)&&(vec[i].legajo == legajo))
+        if((vec[i].estado == 1)&&(vec[i].id == id))
         {
             indice = i;
             break;
@@ -79,14 +80,11 @@ int buscarEmpleado(eEmpleado vec [], int tam, int legajo)
 void altaEmpleado(eEmpleado vec[], int tam, eSector sectores[], int tamSector)
 {
     int indice;
-    int legajo;
-    int esta;
-    char auxLegajo[50];
+    int id;
     char auxNombre[50];
     char auxApellido[50];
     char auxSector[50];
     char auxSueldo[50];
-    char auxSexo[50];
 
     indice = buscarLibre(vec, tam);
 
@@ -96,88 +94,63 @@ void altaEmpleado(eEmpleado vec[], int tam, eSector sectores[], int tamSector)
     }
     else
     {
-        while(!getStringNumeros("ingrese el legajo: \n", auxLegajo))
+        id = indice + 1;
+
+        vec[indice].id = id;
+
+        while(!getStringLetras("ingrese el nombre: \n", auxNombre))
         {
             printf("intente de nuevo...\n");
-
         }
-            legajo = atoi(auxLegajo);
+        strcpy(vec[indice].nombre, auxNombre);
 
+        while(!getStringLetras("ingrese el apellido: \n", auxApellido))
+        {
+            printf("intente de nuevo...\n");
+        }
+        strcpy(vec[indice].apellido, auxApellido);
 
-            esta = buscarEmpleado(vec, tam, legajo);
+        while(!getStringNumeros("ingrese el sueldo: \n", auxSueldo))
+        {
+            printf("intente de nuevo...\n");
+        }
 
-            if(esta != -1)
-            {
-                printf("\n ya existe un empleado con ese legajo en el sistema");
-                mostrarEmpleado(sectores,tamSector,vec[esta]);
-            }
-            else
-            {
-                vec[indice].legajo = legajo;
+        vec[indice].sueldo = atoi(auxSueldo);
+        while(!getStringNumeros("ingrese el sector: \n( 1,sistemas \n 2,RRHH \n 3,compras \n 4,ventas \n 5,legales) \n", auxSector))
+        {
+            printf("intente de nuevo...\n ");
+        }
 
-                while(!getStringLetras("ingrese el nombre: \n", auxNombre))
-                {
-                    printf("intente de nuevo...\n");
-                }
+        vec[indice].Sector = atoi(auxSector);
 
-                strcpy(vec[indice].nombre, auxNombre);
+        vec[indice].estado = 1;
 
-                while(!getStringLetras("ingrese el apellido: \n", auxApellido))
-                {
-                    printf("intente de nuevo...\n");
-                }
-                    strcpy(vec[indice].apellido, auxApellido);
-
-                while(!getStringLetras("ingrese el sexo: \n", auxSexo))
-                {
-                    printf("intente de nuevo...\n");
-                }
-
-                strcpy(vec[indice].sexo, auxSexo);
-
-                while(!getStringNumeros("ingrese el sueldo: \n", auxSueldo))
-                {
-                    printf("intente de nuevo...\n");
-                }
-
-                vec[indice].sueldo = atoi(auxSueldo);
-                while(!getStringNumeros("ingrese el sector: \n( 1,sistemas \n 2,RRHH \n 3,compras \n 4,ventas \n 5,legales) \n", auxSector))
-                {
-                    printf("intente de nuevo...\n ");
-                }
-
-                vec[indice].idSector = atoi(auxSector);
-
-                vec[indice].estado = 1;
-
-                printf("Alta empleado exitosa!!!\n\n");
-            }
-
-
+        printf("Alta empleado exitosa!!!\n\n");
     }
 }
+
 
 
 void modificarEmpleado(eEmpleado vec[], int tam, eSector sectores[],int tamSector)
 {
     int esta;
-    int legajo;
+    int id;
     int opcion;
     char seguir = 's';
     char confirmar;
-    char auxLegajo[50];
+    char auxOpcion[50];
+    char auxId[50];
     char auxNombre[50];
     char auxApellido[50];
     char auxSector[50];
     char auxSueldo[50];
-    char auxSexo[50];
 
-    while(!getStringNumeros("ingrese el legajo del empleado a modificar: \n", auxLegajo))
+    while(!getStringNumeros("ingrese el legajo del empleado a modificar: \n", auxId))
     {
         printf("intente de nuevo...\n");
     }
-    legajo = atoi(auxLegajo);
-    esta = buscarEmpleado(vec, tam, legajo);
+    id = atoi(auxId);
+    esta = buscarEmpleado(vec, tam, id);
 
     if(esta != -1)
     {
@@ -187,26 +160,30 @@ void modificarEmpleado(eEmpleado vec[], int tam, eSector sectores[],int tamSecto
         {
             system("cls");
             printf("            ::M O D I F I C A C I O N::          \n");
-            printf("  1_ Modificar Legajo      2_Modificar Sueldo    \n");
-            printf("  3_ Modificar  Nombre     4_ Modificar Apellido \n");
-            printf("  5_ Modificar sector      6_ Modificar Sexo     \n");
-            printf("  7_ Salir...                                    \n");
+            printf("  1_ Modificar  Nombre       2_Modificar Sueldo  \n");
+            printf("  3_ Modificar Apellido      4_ Modificar sector \n");
+            printf("  5_ Salir....                                   \n");
 
-            scanf("%d",&opcion);
+            while(!getStringNumeros("ingrese una opcion: \n", auxOpcion))
+            {
+                printf("intente de nuevo...\n");
+            }
+            opcion = atoi(auxOpcion);
+
             switch(opcion)
             {
             case 1:
                 printf("\n usted ha seleccionado al empleado : \n");
                 mostrarEmpleado(sectores,tamSector,vec[esta]);
 
-                vec[esta].legajo = legajo;
-                while(!getStringNumeros("ingrese el nuevo legajo: \n", auxLegajo))
+                vec[esta].id = id;
+                while(!getStringNumeros("ingrese el nuevo legajo: \n", auxId))
                 {
                         printf("intente de nuevo...\n");
                 }
-                legajo = atoi(auxLegajo);
+                id = atoi(auxId);
 
-                vec[esta].legajo = legajo;
+                vec[esta].id = id;
 
                 printf("Modifiacion de empleado exitosa!!!\n\n");
 
@@ -218,7 +195,7 @@ void modificarEmpleado(eEmpleado vec[], int tam, eSector sectores[],int tamSecto
                 printf("\n usted ha seleccionado al empleado : \n");
                 mostrarEmpleado(sectores,tamSector,vec[esta]);
 
-                vec[esta].legajo = legajo;
+                vec[esta].id = id;
 
                 while(!getStringNumeros("ingrese el sueldo: \n", auxSueldo))
                 {
@@ -236,7 +213,7 @@ void modificarEmpleado(eEmpleado vec[], int tam, eSector sectores[],int tamSecto
                 printf("\n usted ha seleccionado al empleado : \n");
                 mostrarEmpleado(sectores,tamSector,vec[esta]);
 
-                vec[esta].legajo = legajo;
+                vec[esta].id = id;
 
                 while(!getStringLetras("ingrese el nombre: \n", auxNombre))
                 {
@@ -255,7 +232,7 @@ void modificarEmpleado(eEmpleado vec[], int tam, eSector sectores[],int tamSecto
                 printf("\n usted ha seleccionado al empleado : \n");
                 mostrarEmpleado(sectores,tamSector,vec[esta]);
 
-                vec[esta].legajo = legajo;
+                vec[esta].id = id;
 
                 while(!getStringLetras("ingrese el apellido: \n", auxApellido))
                 {
@@ -273,14 +250,14 @@ void modificarEmpleado(eEmpleado vec[], int tam, eSector sectores[],int tamSecto
                 printf("\n usted ha seleccionado al empleado : \n");
                 mostrarEmpleado(sectores,tamSector,vec[esta]);
 
-                vec[esta].legajo = legajo;
+                vec[esta].id = id;
 
                 while(!getStringNumeros("ingrese el sector: \n( 1,sistemas \n 2,RRHH \n 3,compras \n 4,ventas \n 5,legales) \n", auxSector))
                 {
                     printf("intente de nuevo...\n ");
                 }
 
-                vec[esta].idSector = atoi(auxSector);
+                vec[esta].Sector = atoi(auxSector);
 
                 printf("Modifiacion de empleado exitosa!!!\n\n");
 
@@ -289,24 +266,6 @@ void modificarEmpleado(eEmpleado vec[], int tam, eSector sectores[],int tamSecto
                 break;
 
             case 6:
-                printf("\n usted ha seleccionado al empleado : \n");
-                mostrarEmpleado(sectores,tamSector,vec[esta]);
-
-                vec[esta].legajo = legajo;
-
-                while(!getStringLetras("ingrese el sexo: \n", auxSexo))
-                {
-                    printf("intente de nuevo...\n");
-                }
-                strcpy(vec[esta].sexo, auxSexo);
-
-                printf("Modifiacion de empleado exitosa!!!\n\n");
-
-                vec[esta].estado = 1;
-                system("pause");
-                break;
-
-            case 7:
                 printf("\n confirmar salida s/n?...\n");
                 fflush(stdin);
                 confirmar = getche();
@@ -327,15 +286,19 @@ void modificarEmpleado(eEmpleado vec[], int tam, eSector sectores[],int tamSecto
         while(seguir == 's');
 
     }
+    else
+    {
+        printf("no hay ningun empleado ingresado con ese id...\n");
+    }
 }
 
 void bajaEmpleado(eEmpleado vec[], int tam, eSector sectores[], int tamSector)
 {
     int indice;
     int esta;
-    int legajo;
+    int id;
     char confirmar;
-    char auxLegajo[50];
+    char auxId[50];
 
     indice = buscarLibre(vec, tam);
 
@@ -345,13 +308,13 @@ void bajaEmpleado(eEmpleado vec[], int tam, eSector sectores[], int tamSector)
     }
     else
     {
-        while(!getStringNumeros("ingrese el legajo del empleado a dar de baja: \n", auxLegajo))
+        while(!getStringNumeros("ingrese el id del empleado a dar de baja: \n", auxId))
         {
             printf("intente de nuevo...\n");
 
         }
-        legajo = atoi(auxLegajo);
-        esta=buscarEmpleado(vec, tam, legajo);
+        id = atoi(auxId);
+        esta=buscarEmpleado(vec, tam, id);
 
         if(esta != -1)
         {
@@ -364,7 +327,7 @@ void bajaEmpleado(eEmpleado vec[], int tam, eSector sectores[], int tamSector)
 
             if( tolower(confirmar == 's'))
             {
-                vec[esta].legajo = legajo;
+                vec[esta].id = id;
 
                 vec[esta].estado = 0;
                 printf("\n Baja de empleado exitosa!!!\n\n");
@@ -374,36 +337,123 @@ void bajaEmpleado(eEmpleado vec[], int tam, eSector sectores[], int tamSector)
                 printf("\n Baja de empleado cancelada \n\n");
             }
         }
+        else
+        {
+            printf("no hay empleados ingresados con ese id...\n");
+        }
     }
 }
 
-/** \brief
- *
- * \param vec[] eEmpleado
- * \param tam int
- * \param sectores[] eSector
- * \param tamSector int
- * \param sentido int indica el orden sentidio del orden, siendo 0 ascendente y 1 descendente
- * \return void
- *
- */
-void ordenarEmpleados(eEmpleado vec[], int tam, eSector sectores[], int tamSector, int sentido)
+void ordenarEmpleados(eEmpleado vec[], int tam)
 {
     int i;
     int j;
-    eEmpleado auxInt;
+    eEmpleado aux;
+
+    for(i = 0; i < tam-1; i++)
+    {
+        for(j = i+1; j< tam; j++)
+        {
+            if(vec[i].Sector > vec[j].Sector)
+            {
+                aux = vec[i];
+                vec[i] = vec[j];
+                vec[j] = aux;
+            }
+        }
+    }
+
     for(i = 0 ; i < tam - 1  ; i++)
     {
         for(j = i + 1 ; j < tam  ; j++)
         {
-            if(( sentido && vec[i].legajo < vec[j].legajo )
-                    || (!sentido && vec[i].legajo > vec[j].legajo))
+            if(( vec[i].Sector == vec[j].Sector))
             {
-                auxInt = vec[i];
-                vec[i] = vec[j];
-                vec[j] = auxInt;
+                if(strcmp(vec[i].apellido, vec[j].apellido))
+                {
+                    aux = vec[i];
+                    vec[i] = vec[j];
+                    vec[j] = aux;
+                }
             }
         }
     }
-    printf("\n Orden de empleados exitosa!!!, presione la opcion 5 para ver la lista en orden \n\n");
+}
+void informarSueldos(eEmpleado vec[],int tam)
+{
+    float promedio = 0;
+    float acumulador = 0;
+    int contador = 0;
+    int i;
+
+    for(i = 0; i < tam; i++)
+    {
+        if(vec[i].estado)
+        {
+            acumulador += vec[i].sueldo;
+        }
+    }
+
+    promedio = acumulador /(i-1);
+
+    for(i = 0; i < tam; i++)
+    {
+        if(vec[i].estado)
+        {
+            if(vec[i].sueldo > promedio)
+            {
+                contador++;
+            }
+        }
+
+    }
+    printf("Suma total de los salarios :%.2f\nPromedio de los salarios :%.2f\nCantidad de empleados que superan el promedio :%d\n",acumulador,promedio,contador);
+
+}
+
+void listarEmpleados(eEmpleado vec[], int tam, eSector sector[], int tamSector)
+{
+    int opcion;
+    char auxOpcion[50];
+    char confirmar;
+    char seguir;
+
+    do
+    {
+        printf("1_Mostrar informacion de empleados\n 2_Mostrar informacion de salarios\n 3_Salir...\n");
+        while(!getStringNumeros("ingrese una opcion: \n",auxOpcion ));
+        {
+            printf("intente de nuevo...\n");
+        }
+        opcion = atoi(auxOpcion);
+
+        switch(opcion)
+        {
+            case 1:
+                ordenarEmpleados(vec,tam);
+                mostrarEmpleados(vec,tam, sector, tamSector);
+                break;
+            case 2:
+                informarSueldos(vec,tam);
+                system("pause");
+                break;
+            case 3:
+                printf("\n confirmar salida s/n?...\n");
+                fflush(stdin);
+                confirmar = getche();
+
+                if( tolower(confirmar)== 's')
+                {
+                    seguir = 'n';
+                }
+
+                break;
+
+            default:
+                printf("\n Opcion invalida, intente de nuevo...");
+                system("pause");
+                system("break");
+            break;
+        }
+    }while(seguir == 's');
 }

@@ -7,20 +7,15 @@
 #include <string.h>
 #include <ctype.h>
 #define TAMSEC 5
-//#define TAM 3
+#define TAM 100
 
 
 int main()
 {
-
-    int tamanio;
-    printf("        :: L I S T A  D E  E M P L E A D O S ::       \n");
-    printf("ingrese el tamanio de la lista: \n");
-    scanf("%d",&tamanio);
     int opcion;
     char seguir='s';
     char confirmar;
-    int sentidoA = 0;
+    char auxOpcion[20];
     eSector sectores[]=
     {
         {1,"sistemas"},
@@ -29,52 +24,41 @@ int main()
         {4,"ventas"},
         {5,"legales"},
     };
-    eEmpleado lista[tamanio];
+    eEmpleado lista[TAM];
 
-    inicializarEmpleados(lista, tamanio);
+    inicializarEmpleados(lista, TAM);
 
     do
     {
         printf("\n\n");
         system("cls");
         printf("         ::A B M      E M P L E A D O S::      \n\n");
-        printf(" 1- Alta Empleado\n 2- Baja Empleado\n 3- Modificacion Empleado\n 4- Ordenar Empleados\n 5- Listar Empleados\n 6- Listar sectores con empleados\n 7- Cantidad de empleados por sector\n 8- Salir\n\n");
-        printf("Ingrese opcion: ");
-        scanf("%d", &opcion);
-
+        printf(" 1- Alta Empleado\n 2- Baja Empleado\n 3- Modificacion Empleado\n 4- Listar Empleados \n 5- Salir\n\n");
+        while(!getStringNumeros("ingrese la opcion: \n", auxOpcion))
+        {
+            printf("intente de nuevo...\n");
+        }
+        opcion = atoi(auxOpcion);
 
         switch(opcion)
         {
         case 1:
-            altaEmpleado(lista, tamanio,sectores,TAMSEC);
+            altaEmpleado(lista, TAM,sectores,TAMSEC);
             system("pause");
             break;
         case 2:
-            bajaEmpleado(lista,tamanio,sectores,TAMSEC);
+            bajaEmpleado(lista,TAM,sectores,TAMSEC);
             system("pause");
             break;
         case 3:
-            modificarEmpleado(lista,tamanio,sectores,TAMSEC);
+            modificarEmpleado(lista,TAM,sectores,TAMSEC);
             system("pause");
             break;
-
         case 4:
-            ordenarEmpleados(lista,tamanio, sectores, TAMSEC, sentidoA );
+            listarEmpleados(lista, TAM, sectores, TAMSEC);
             system("pause");
             break;
         case 5:
-            mostrarEmpleados(lista, tamanio, sectores, TAMSEC);
-            system("pause");
-            break;
-        case 6:
-            mostrarSectoresConEmpleados(lista, tamanio, sectores, TAMSEC);
-            system("pause");
-            break;
-        case 7:
-            mostrarCantEmpleadosXSector(lista,tamanio,sectores,TAMSEC);
-            system("pause");
-            break;
-        case 8:
             printf("\n confirmar salida s/n?...");
             fflush(stdin);
             confirmar=getche();

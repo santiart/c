@@ -1,6 +1,0 @@
-int 1;
-
-printf("ingrese id: \n");
-scanf("&d", &lista[i].id)=idAnterior + 1;
-
-

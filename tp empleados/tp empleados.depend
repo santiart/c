@@ -27,7 +27,7 @@
 	<string.h>
 	<ctype.h>
 
-1557107995 source:c:\users\juan\desktop\c\tp empleados\main.c
+1557536841 source:c:\users\juan\desktop\c\tp empleados\main.c
 	"empleado.h"
 	<stdio.h>
 	<stdlib.h>
@@ -35,11 +35,11 @@
 	<string.h>
 	<ctype.h>
 
-1557110391 source:c:\users\juan\desktop\c\tp empleados\empleado.c
+1557536803 source:c:\users\juan\desktop\c\tp empleados\empleado.c
 	"empleado.h"
 	"input.h"
 
-1557108532 c:\users\juan\desktop\c\tp empleados\empleado.h
+1557536810 c:\users\juan\desktop\c\tp empleados\empleado.h
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
@@ -72,6 +72,6 @@
 1557086063 c:\users\juan\desktop\c\tp empleados\sectores.h
 	"empleado.h"
 
-1557086094 source:c:\users\juan\desktop\c\tp empleados\sectores.c
+1557527388 source:c:\users\juan\desktop\c\tp empleados\sectores.c
 	"sectores.h"
 
