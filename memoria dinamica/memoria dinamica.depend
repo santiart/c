@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1557751772 source:d:\nueva carpeta\memoria dinamica\main.c
+	<stdio.h>
+	<stdlib.h>
+
