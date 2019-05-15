@@ -27,11 +27,18 @@ int main()
     eEmpleado otroEmpleado = {2222, "ana","farias", 'f', 40000, {12,06,2000}};
 
     eEmpleado lista[] = {unEmpleado, otroEmpleado};
+
     for(int i=0; i<2;i++)
     {
-        printf("nombre empleado: %s\n", (lista+1)->nombre);
+        printf("nombre empleado: %s\n", (lista+i)->nombre);
+        printf("apellido del empleado: %s\n", (lista+i)->apellido);
+        printf("id del empleado: %d\n", (lista+i)->id);
+        printf("sexo del empleado: %c\n", (lista+i)->sexo);
+        printf("sueldo del empleado: %.2f\n", (lista+i)->sueldo);
+        printf("dia de ingreso: %d\n", (lista+i)->fechaIngreso.dia);
+        printf("mes de ingreso: %d\n", (lista+i)->fechaIngreso.mes);
+        printf("anio de ingreso: %d\n", (lista+i)->fechaIngreso.anio);
     }
-
     /*
     eEmpleado* punteroEmp;
     punteroEmp = &unEmpleado;
