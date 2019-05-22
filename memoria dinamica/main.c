@@ -1,41 +1,83 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define TAM 5
+#define TAMA 10
 
-void leerPuntero(int *p);
+int validarMalloc(void* punt);
+
+
 int main()
 {
-    int x = 10;
-    int* p = &x;
-    //int* q = p;
-    int** r = &p;// puntero de puntero
+    int* pnum;
+    int* paux;
+    int i;
+    pnum = (int*) malloc(sizeof(int) * TAM);
+    if (validarMalloc(pnum)==1)
+    {
+        exit(1);
+    }
+    for(i=0;i<TAM;i++)
+    {
+        printf("\ningrese numero: ");
+        scanf("%d", pnum+i);
+    }
+    for(i=0;i<TAM;i++)
+    {
+        printf("%d", *(pnum+i));
+    }
+    paux = (int*) realloc(pnum, sizeof(int)*TAMA);
+    if(paux!=NULL)
+    {
+        pnum=paux;
+    }
+    else
+    {
+        printf("no se pudo realocar memoria");
+    }
+        for(i=5;i<TAMA;i++)
+    {
+        printf("\ningrese numero: ");
+        scanf("%d", pnum+i);
+    }
+    for(i=0;i<TAMA;i++)
+    {
+        printf("%d", *(pnum+i));
+    }
+    paux = (int*) realloc(pnum, sizeof(int)*TAM);
+    if(paux!=NULL)
+    {
+        pnum=paux;
+    }
+    else
+    {
+        printf("no se pudo realocar memoria");
+    }
+        for(i=0;i<TAM;i++)
+    {
+        printf("\ningrese numero: ");
+        scanf("%d", pnum+i);
+    }
+    for(i=0;i<TAM;i++)
+    {
+        printf("%d", *(pnum+i));
+    }
+    free(pnum);
 
-    printf("direccion de memoria de p: %d\n", **r);// puntero a puntero, muestra el 10
-    //printf("valor de q: %d\n", *q);
-    //printf(" direccion de x: %x \n", &x);
 
-    printf("antes de llamar al puntero x vale %d\n", x);
-    leerPuntero(&x);
-    printf("despues de llamar al puntero x vale %d\n", x);
-    /*
-    int* p;
 
-    p = &x;
-
-    printf("%d\n", *p);// valor de direccion de memoria
-    printf("%x\n", p);// mostrar en hexa
-    printf("%d\n", p);// mostrar en decimal
-    printf("%o\n", p);// mostrar en octal
-    printf("%b")//numero en binario
-    */
-    //printf("%d\n", x);
     return 0;
 }
 
-void leerPuntero(int* p)
+int validarMalloc(void* punt)
 {
-    //printf(" direccion guardada en p: %x \n", p);
-    *p = 38;
-
-
-
+    if(punt == NULL)
+    {
+        printf("no se consiguio memoria\n");
+        system("pause");
+        return(1);
+    }
+    else
+    {
+        return(0);
+    }
 }

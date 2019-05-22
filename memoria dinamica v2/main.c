@@ -12,7 +12,7 @@ typedef struct
 
 int main()
 {
-    eEmpleado emp1;
+    //eEmpleado emp1;
     eEmpleado* pEmp = (eEmpleado*) malloc(sizeof(eEmpleado));
 
     if(pEmp == NULL)
