@@ -8,10 +8,10 @@
 #define ESC 27
 
 struct a{
-		char nombre[31];
-		int edad;
-		int legajo;
-	};
+    char nombre[31];
+    int edad;
+    int legajo;
+};
 
 int main (void)
 {
@@ -20,7 +20,7 @@ int main (void)
    int cant;
    int legajoAux;
 
-   if ((bin=fopen(ARCH,"rb+"))==NULL){ctype.h>
+   if ((bin=fopen(ARCH,"rb+"))==NULL){
       if ((bin=fopen(ARCH,"wb+"))==NULL){
          printf("No se pudo abrir el archivo");
          exit(1);
@@ -34,7 +34,7 @@ int main (void)
       printf("Ingrese la edad: ");
       scanf("%d",&pers.edad);
 
-      printf("Ingrese la legajo: ");
+      printf("Ingrese el legajo: ");
       scanf("%d",&pers.legajo);
 
       fflush(stdin);

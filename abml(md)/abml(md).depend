@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1559079127 source:c:\users\juan\desktop\c\abml(md)\input.c
+	"input.h"
+
+1559079127 c:\users\juan\desktop\c\abml(md)\input.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
+1559332946 source:c:\users\juan\desktop\c\abml(md)\main.c
+	<stdio.h>
+	<stdlib.h>
+

@@ -2,3 +2,9 @@
 1558536238 source:c:\users\alumno\desktop\c\archivo lem\archivolem.c
 	<stdio.h>
 
+1559079121 source:c:\users\juan\desktop\c\archivo lem\archivolem.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+
