@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1559400892 source:c:\users\alumno\desktop\c\abm\abm con archivos 2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1559400892 c:\users\alumno\desktop\c\abm\abm con archivos 2\utn.h
+
+1559400892 source:c:\users\alumno\desktop\c\abm\abm con archivos 2\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+

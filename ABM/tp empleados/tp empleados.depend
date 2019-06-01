@@ -1,0 +1,82 @@
+# depslib dependency file v1.0
+1559391447 source:c:\users\alumno\desktop\c\tp empleados\main.c
+	"empleado.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	<ctype.h>
+
+1555502937 c:\users\alumno\desktop\c\tp empleados\menu.h
+	<stdio.h>
+	<stdlib.h>
+
+1555502376 source:c:\users\alumno\desktop\c\tp empleados\menu.c
+	<stdio.h>
+	<stdlib.h>
+	"menu.h"
+
+1559391447 source:c:\users\alumno\desktop\c\tp empleados\empleado.c
+	"empleado.h"
+	"input.h"
+
+1559391447 c:\users\alumno\desktop\c\tp empleados\empleado.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	<ctype.h>
+	"sectores.h"
+	"input.h"
+
+1557538643 source:c:\users\juan\desktop\c\tp empleados\main.c
+	"empleado.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	<ctype.h>
+
+1557536803 source:c:\users\juan\desktop\c\tp empleados\empleado.c
+	"empleado.h"
+	"input.h"
+
+1557537708 c:\users\juan\desktop\c\tp empleados\empleado.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	<ctype.h>
+	"sectores.h"
+	"input.h"
+
+1559391447 c:\users\alumno\desktop\c\tp empleados\sectores.h
+	"empleado.h"
+
+1559391447 source:c:\users\alumno\desktop\c\tp empleados\sectores.c
+	"sectores.h"
+
+1559391447 source:c:\users\alumno\desktop\c\tp empleados\input.c
+	"input.h"
+
+1559391447 c:\users\alumno\desktop\c\tp empleados\input.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
+1557537708 source:c:\users\juan\desktop\c\tp empleados\input.c
+	"input.h"
+
+1557537708 c:\users\juan\desktop\c\tp empleados\input.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
+1557537708 c:\users\juan\desktop\c\tp empleados\sectores.h
+	"empleado.h"
+
+1557537708 source:c:\users\juan\desktop\c\tp empleados\sectores.c
+	"sectores.h"
+

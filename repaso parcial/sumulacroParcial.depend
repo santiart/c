@@ -1,0 +1,76 @@
+# depslib dependency file v1.0
+1556118860 source:c:\users\alumno\desktop\sumulacroparcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	"empleado.h"
+
+1556118099 source:c:\users\alumno\desktop\sumulacroparcial\empleado.c
+	"empleado.h"
+	<string.h>
+
+1556118860 c:\users\alumno\desktop\sumulacroparcial\empleado.h
+
+1556328693 source:c:\users\axel\desktop\sumulacroparcial\empleado.c
+	"empleado.h"
+	"input.h"
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+
+1556300812 c:\users\axel\desktop\sumulacroparcial\empleado.h
+
+1556316453 source:c:\users\axel\desktop\sumulacroparcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	"empleado.h"
+	"input.h"
+
+1556207226 source:c:\users\axel\desktop\sumulacroparcial\axelutn.c
+	<stdio.h>
+	<stdint.h>
+	<stdlib.h>
+	<string.h>
+	"AxelUTN.h"
+	<ctype.h>
+
+1556207248 c:\users\axel\desktop\sumulacroparcial\axelutn.h
+
+1556333687 source:c:\users\axel\desktop\sumulacroparcial\input.c
+	<stdio.h>
+	<stdint.h>
+	<stdlib.h>
+	<string.h>
+	"input.h"
+	<ctype.h>
+
+1556213655 c:\users\axel\desktop\sumulacroparcial\input.h
+
+1556370214 source:c:\users\alumno\desktop\repaso parcial\input.c
+	<stdio.h>
+	<stdint.h>
+	<stdlib.h>
+	<string.h>
+	"input.h"
+	<ctype.h>
+
+1556370217 c:\users\alumno\desktop\repaso parcial\input.h
+
+1556370950 source:c:\users\alumno\desktop\repaso parcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	"empleado.h"
+	"input.h"
+
+1556372645 c:\users\alumno\desktop\repaso parcial\empleado.h
+
+1556375885 source:c:\users\alumno\desktop\repaso parcial\empleado.c
+	"empleado.h"
+	"input.h"
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+

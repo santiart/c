@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1559391446 source:c:\users\alumno\desktop\c\memoria dinamica v3\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	<conio.h>
+
