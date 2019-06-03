@@ -24,14 +24,14 @@ void altaEmpleado(eEmpleado* lista, int tam);
 
 int main()
 {
-    FILE* empleado;
+    FILE* pArchEmp;
     //FILE* pArchTxt;
     eEmpleado* ptrEmp;
     int escritura;
     ptrEmp = (eEmpleado*)malloc(sizeof(eEmpleado)*TAM);
 
-    empleado = fopen("./empleados.csv", "ab");
-    if(empleado == NULL)
+    pArchEmp = fopen("./empleados.csv", "ab");
+    if(pArchEmp == NULL)
     {
         printf("no se pudo abrir el archivo...\n");
         system("pause");
@@ -39,8 +39,8 @@ int main()
     }
 
     altaEmpleado(ptrEmp,TAM);
-    fprintf(empleado,"nombre          apellido           sexo                  sueldo\n");
-    escritura = fwrite(ptrEmp,sizeof(eEmpleado),TAM,empleado);
+    fprintf(pArchEmp,"nombre          apellido           sexo                  sueldo\n");
+    escritura = fwrite(ptrEmp,sizeof(eEmpleado),TAM,pArchEmp);
     if(escritura<1)
     {
         printf("error al escribir archivo...\n");
@@ -48,10 +48,10 @@ int main()
 
     eEmpleado* punteroEmp=(eEmpleado*)malloc(sizeof(eEmpleado)*TAM);
     int i=0;
-    while(!feof(empleado))
+    while(!feof(pArchEmp))
     {
         printf("esdgdf");
-        fread(punteroEmp+i,sizeof(eEmpleado),1,empleado);
+        fread(punteroEmp+i,sizeof(eEmpleado),1,pArchEmp);
         i++;
     }
 
@@ -61,12 +61,12 @@ int main()
     {
         if(ptrEmp->id!=-1)
         {
-            fprintf(empleado,"%d\t\%s\t\%s\t\%.2f\n",(ptrEmp+i)->id,(ptrEmp+i)->nombre,(ptrEmp+i)->apellido,(ptrEmp+i)->sueldo);
+            fprintf(pArchEmp,"%d\t\%s\t\%s\t\%.2f\n",(ptrEmp+i)->id,(ptrEmp+i)->nombre,(ptrEmp+i)->apellido,(ptrEmp+i)->sueldo);
         }
     }
     printf("id: %d\t\ nombre: %s\t\ apellido: %s\t\sueldo: %.2f\n",ptrEmp->id,ptrEmp->nombre,ptrEmp->apellido,ptrEmp->sueldo);
 
-    fclose(empleado);
+    fclose(pArchEmp);
     printf("\nalta exitosa!!!");
     return 0;
 }
