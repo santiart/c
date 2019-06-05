@@ -47,7 +47,7 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajad
 int employee_setId(Employee* this,int id){
 
     int todoOk = 0;
-    if(this != NULL && id > 0 && id > 100000)
+    if(this != NULL && id > 0)
     {
         this->id= id;
         todoOk = 1;
@@ -67,8 +67,8 @@ int employee_getId(Employee* this,int* id){
 int employee_setNombre(Employee* this,char* nombre){
 
     int todoOk = 0;
-    if(this != NULL && nombre != NULL){
-        *(this->nombre) = *nombre;
+    if(this != NULL && strlen(nombre)>2){
+        strcpy(this->nombre,nombre);
         todoOk = 1;
     }
     return todoOk;
@@ -77,7 +77,7 @@ int employee_getNombre(Employee* this,char* nombre){
 
     int todoOk = 0;
     if(this != NULL && *nombre != NULL){
-        strcpy(*(this->nombre),*nombre);
+        strcpy(nombre,this->nombre);
         todoOk = 1;
     }
     return todoOk;

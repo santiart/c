@@ -13,24 +13,9 @@
  */
 int controller_loadFromText(char* path , LinkedList* pArrayListEmployee,int tam)
 {
-    int todoOk = 0;
-    char ext[] = ".txt";
-    char nombreArchivo[100];
-    strcpy(nombreArchivo,path);
-    strcat(nombreArchivo,ext);
-    FILE* f;
-    f = fopen(nombreArchivo,"r");
-    if(f == NULL){
-        printf("no se pudo abrir el archivo...\n");
-        todoOk = 1;
-        return todoOk;
-    }
-    fprintf("Id              Full_Name            Hours Worked           Salary \n");
-    for(int i=0 ; i<tam ; i++){
-        fprintf(f,"%d,%s,%d,%d",pArrayListEmployee->)
-    }
-    fclose(f);
-    return todoOk;
+    int todoOK = 1;
+
+    return todoOK;
 }
 
 /** \brief Carga los datos de los empleados desde el archivo data.csv (modo binario).
@@ -42,24 +27,7 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee,int tam)
  */
 int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee,int tam)
 {
-    int todoOk = 1;
-    char ext[] = "bin.";
-    char nombreArchivo[100];
-    strcpy(nombreArchivo,path);
-    strcat(nombreArchivo,ext);
-    FILE* f;
-
-    f = fopen(nombreArchivo,"rb");
-    if(f == NULL){
-        printf("no se pudo abrir el archivo...\n");
-        todoOk = 0;
-        return todoOk;
-    }
-    for(int i=0 ; i<tam ; i++){
-        fwrite(*(pArrayListEmployee+i),sizeof(LinkedList),1,f);
-    }
-    fclose(f);
-    return todoOk;
+    return 1;
 }
 
 /** \brief Alta de empleados
@@ -132,7 +100,24 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
 {
-    return 1;
+    int todoOk = 0;
+    char ext[] = ".csv";
+    char nombreArchivo[100];
+    strcpy(nombreArchivo,path);
+    strcat(nombreArchivo,ext);
+    FILE* f;
+    f = fopen(nombreArchivo,"r");
+    if(f == NULL){
+        printf("no se pudo abrir el archivo...\n");
+        todoOk = 1;
+        return todoOk;
+    }
+    fprintf("Id              Full_Name            Hours Worked           Salary \n");
+    for(int i=0 ; i<tam ; i++){
+        fprintf(f,"%d,%s,%d,%d",pArrayListEmployee->)
+    }
+    fclose(f);
+    return todoOk;
 }
 
 /** \brief Guarda los datos de los empleados en el archivo data.csv (modo binario).
@@ -144,6 +129,22 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
  */
 int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
 {
-    return 1;
-}
+    int todoOk = 1;
+    char ext[] = "bin.";
+    char nombreArchivo[100];
+    strcpy(nombreArchivo,path);
+    strcat(nombreArchivo,ext);
+    FILE* f;
 
+    f = fopen(nombreArchivo,"rb");
+    if(f == NULL){
+        printf("no se pudo abrir el archivo...\n");
+        todoOk = 0;
+        return todoOk;
+    }
+    for(int i=0 ; i<tam ; i++){
+        fwrite(*(pArrayListEmployee+i),sizeof(LinkedList),1,f);
+    }
+    fclose(f);
+    return todoOk;
+}
