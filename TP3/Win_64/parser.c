@@ -18,6 +18,7 @@ int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
     char auxId[100];
     char auxHoras[120];
     char auxSueldo[120];
+
     if(pFile == NULL)
     {
         printf("no se pudo abrir el archivo...\n");
@@ -35,6 +36,7 @@ int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
             {
                 ll_add(pArrayListEmployee,pEmp);
                 todoOk = 0;
+
             }
         }
     }

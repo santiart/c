@@ -3,6 +3,7 @@
 #include "LinkedList.h"
 #include "Controller.h"
 #include "Employee.h"
+#include "input.h"
 
 /****************************************************
     Menu:
@@ -22,8 +23,20 @@
 int main()
 {
     int option = 0;
+    char auxOption[50];
     LinkedList* listaEmpleados = ll_newLinkedList();
     do{
+            printf("              :: A B M   E M P L E A D O S ::                    \n");
+            printf("1_Carar empleados desde texto  2_Cargar empleados desde binario  \n");
+            printf("3_Alta de empleado             4_Modificar empleado              \n");
+            printf("5_Baja de empleado             6_Listar empleados                \n");
+            printf("7_Ordenar empleados            8_Guardar empleados en texto      \n");
+            printf("9_Guardar empleados en binario 10_Salir...                       \n");
+            while(!getStringNumeros("ingrese una opcion:\n",auxOption))
+            {
+                printf("intente de nuevo...\n");
+            }
+            option = atoi(auxOption);
         switch(option)
         {
             case 1:
@@ -49,8 +62,18 @@ int main()
             case 8:
                 controller_saveAsText("data.csv",listaEmpleados);
                 break;
-
+            case 9:
+                controller_saveAsBinary("data,csv",listaEmpleados);
+                break;
+            case 10:
+            printf("hasta luego\n");
+            break;
+            default:
+                printf("opcion inexitente...\n");
+                break;
         }
+    system("pause");
+    system("cls");
     }while(option != 10);
     return 0;
 }
