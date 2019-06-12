@@ -133,20 +133,20 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
 int controller_editEmployee(LinkedList* pArrayListEmployee)
 {
     Employee* pEmp;
-    int todoOk = 1;
+    int todoOk = 0;
     int i;
-    char auxOption[50];
+    char* auxOption = (char*)malloc(sizeof(char));
     int option;
+    int flag = 0;
     char respuesta = 's';
     char confirmar;
-    int idingresado;
     int Id;
-    char auxId[50];
+    char* auxId = (char*)malloc(sizeof(char));
     int Sueldo;
     int Horas;
-    char auxnombre[100];
-    char auxSueldo[50];
-    char auxHoras[50];
+    char* auxnombre = (char*)malloc(sizeof(char));
+    char* auxSueldo = (char*)malloc(sizeof(char));
+    char* auxHoras = (char*)malloc(sizeof(char));
 
     if(pArrayListEmployee != NULL)
     {
@@ -158,66 +158,75 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
         for(i = 0; i<ll_len(pArrayListEmployee); i++)
         {
             pEmp = ll_get(pArrayListEmployee,i);
-            employee_getId(pEmp,&idingresado);
 
-            if(idingresado == Id)
+            if(pEmp->id == Id)
             {
-                do
-                {
-                    printf("    ::M O D I F I C A C I O N  D E L  E M P L E A D O::   \n");
-                    printf("1_Modificar el Nombre              2_Modificar el Sueldo  \n");
-                    printf("3_Modificar la cantidad de horas   4_Salir...             \n");
-                    while(!getStringNumeros("ingrese una opcion: \n",auxOption))
-                    {
-                        printf("intente ingresar la opcion nuevamente...\n");
-                    }
-                    option = atoi(auxOption);
-                    switch(option)
-                    {
-                    case 1:
-                        while(!getStringLetras("ingrese el nuevo nombre: \n",auxnombre))
-                        {
-                            printf("intente de nuevo...\n");
-                        }
-                        employee_setNombre(pEmp,auxnombre);
-                        todoOk = 0;
-                        break;
-                    case 2:
-                        while(!getStringNumeros("ingrese el nuevo sueldo:\n",auxSueldo))
-                        {
-                            printf("intente de nuevo...\n");
-                        }
-                        Sueldo = atoi(auxSueldo);
-                        employee_setSueldo(pEmp,Sueldo);
-                        todoOk = 0;
-                        break;
-                    case 3:
-                        while(!getStringNumeros("ingrese la nueva cantidad de horas:\n",auxHoras))
-                        {
-                            printf("intente de nuevo...\n");
-                        }
-                        Horas = atoi(auxHoras);
-                        employee_setHorasTrabajadas(pEmp,Horas);
-                        todoOk = 0;
-                        break;
-                    case 4:
-                        printf("¿desea salir? (s/n)\n");
-                        fflush(stdin);
-                        confirmar = getche();
-                        if(tolower(confirmar)=='s')
-                        {
-                            respuesta = 'n';
-                        }
-                        todoOk = 0;
-                        break;
-                    default:
-                        printf("ha ingresado una opcion incorrecta, intente de nuevo...\n");
-                    }
-                    system("pause");
-                    system("cls");
-                }
-                while((respuesta = 's'));
+                pEmp = ll_pop(pArrayListEmployee,i);
+                flag = 1;
+                printf("usted ha seleccionado al empleado: \n");
+                printf("%d  %s  %d  %d\n",pEmp->id,pEmp->nombre,pEmp->horasTrabajadas,pEmp->sueldo);
+                break;
             }
+        }
+        if(flag == 1)
+        {
+            do
+            {
+                printf("    ::M O D I F I C A C I O N  D E L  E M P L E A D O::   \n");
+                printf("1_Modificar el Nombre              2_Modificar el Sueldo  \n");
+                printf("3_Modificar la cantidad de horas   4_Salir...             \n");
+                while(!getStringNumeros("ingrese una opcion: \n",auxOption))
+                {
+                    printf("intente ingresar la opcion nuevamente...\n");
+                }
+                option = atoi(auxOption);
+                switch(option)
+                {
+                case 1:
+                    while(!getStringLetras("ingrese el nuevo nombre: \n",auxnombre))
+                    {
+                        printf("intente de nuevo...\n");
+                    }
+                    employee_setNombre(pEmp,auxnombre);
+                    todoOk = 1;
+                    printf("modificacion de empleado exitosa!!!\n");
+                    break;
+                case 2:
+                    while(!getStringNumeros("ingrese el nuevo sueldo:\n",auxSueldo))
+                    {
+                        printf("intente de nuevo...\n");
+                    }
+                    Sueldo = atoi(auxSueldo);
+                    employee_setSueldo(pEmp,Sueldo);
+                    todoOk = 1;
+                    printf("modificacion de empleado exitosa!!!\n");
+                    break;
+                case 3:
+                    while(!getStringNumeros("ingrese la nueva cantidad de horas:\n",auxHoras))
+                    {
+                        printf("intente de nuevo...\n");
+                    }
+                    Horas = atoi(auxHoras);
+                    employee_setHorasTrabajadas(pEmp,Horas);
+                    todoOk = 1;
+                    printf("modificacion de empleado exitosa!!!\n");
+                    break;
+                case 4:
+                    printf("hasta luego\n");
+                    todoOk = 1;
+                    break;
+                default:
+                    printf("ha ingresado una opcion incorrecta, intente de nuevo...\n");
+                }
+                system("pause");
+                system("cls");
+            }
+            while(option != 4);
+            ll_push(pArrayListEmployee,i,pEmp);
+        }
+        else
+        {
+            printf("el id no existe...\n");
         }
     }
     return todoOk;
