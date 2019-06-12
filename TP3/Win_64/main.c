@@ -26,12 +26,12 @@ int main()
     char auxOption[50];
     LinkedList* listaEmpleados = ll_newLinkedList();
     do{
-            printf("              :: A B M   E M P L E A D O S ::                    \n");
-            printf("1_Carar empleados desde texto  2_Cargar empleados desde binario  \n");
-            printf("3_Alta de empleado             4_Modificar empleado              \n");
-            printf("5_Baja de empleado             6_Listar empleados                \n");
-            printf("7_Ordenar empleados            8_Guardar empleados en texto      \n");
-            printf("9_Guardar empleados en binario 10_Salir...                       \n");
+            printf("              :: A B M   E M P L E A D O S ::                     \n");
+            printf("1_Cargar empleados desde texto  2_Cargar empleados desde binario  \n");
+            printf("3_Alta de empleado              4_Modificar empleado              \n");
+            printf("5_Baja de empleado              6_Listar empleados                \n");
+            printf("7_Ordenar empleados             8_Guardar empleados en texto      \n");
+            printf("9_Guardar empleados en binario  10_Salir...                       \n");
             while(!getStringNumeros("ingrese una opcion:\n",auxOption))
             {
                 printf("intente de nuevo...\n");
@@ -40,6 +40,7 @@ int main()
         switch(option)
         {
             case 1:
+
                 controller_loadFromText("data.csv",listaEmpleados);
                 break;
             case 2:

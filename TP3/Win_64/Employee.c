@@ -10,7 +10,7 @@ Employee* employee_new()
     if(nuevoEmpleado != NULL)
     {
         nuevoEmpleado->id = 0;
-        strcpy(nuevoEmpleado->nombre, "");
+        strcpy(nuevoEmpleado->nombre, " ");
         nuevoEmpleado->sueldo = 0;
         nuevoEmpleado->horasTrabajadas = 0;
     }
@@ -18,11 +18,12 @@ Employee* employee_new()
 }
 Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr,char* sueldoStr){
 
-    Employee* nuevoEmpleado = (Employee*)malloc(sizeof(Employee));
-    int todoOk = 0;
+    Employee* nuevoEmpleado = employee_new();
+    int todoOk = 1;
     if(nuevoEmpleado != NULL)
     {
-        if(employee_setId(nuevoEmpleado,atoi(idStr))==1)
+
+        if((employee_setId(nuevoEmpleado,atoi(idStr)))==1)
         {
             if(employee_setHorasTrabajadas(nuevoEmpleado,atoi(horasTrabajadasStr))==1)
             {
@@ -30,12 +31,12 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajad
                 {
                     if(employee_setSueldo(nuevoEmpleado,atoi(sueldoStr))==1)
                     {
-                        todoOk = 1;
+                        todoOk = 0;
                     }
                 }
             }
         }
-        if(todoOk == 0)
+        if(todoOk == 1)
         {
             free(nuevoEmpleado);
             nuevoEmpleado = NULL;
@@ -47,9 +48,9 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajad
 int employee_setId(Employee* this,int id){
 
     int todoOk = 0;
-    if(this != NULL && id > 0)
+    if(this != NULL && id >= 0)
     {
-        this->id= id;
+        this->id= (id+1);
         todoOk = 1;
     }
     return todoOk;
@@ -87,7 +88,7 @@ int employee_setSueldo(Employee* this,int sueldo)
 {
 
     int todoOk = 0;
-    if(this != NULL && sueldo > 0 && sueldo > 100000)
+    if(this != NULL && sueldo > 0 && sueldo < 200000)
     {
         this->sueldo = sueldo;
         todoOk = 1;
@@ -108,7 +109,7 @@ int employee_getSueldo(Employee* this,int* sueldo)
 int employee_setHorasTrabajadas(Employee* this,int horasTrabajadas)
 {
     int todoOk = 0;
-    if(this != NULL && horasTrabajadas != NULL)
+    if(this != NULL && horasTrabajadas >=0)
     {
         this->horasTrabajadas = horasTrabajadas;
         todoOk = 1;
@@ -118,7 +119,7 @@ int employee_setHorasTrabajadas(Employee* this,int horasTrabajadas)
 int employee_getHorasTrabajadas(Employee* this,int* horasTrabajadas)
 {
     int todoOk = 0;
-    if(this != NULL && horasTrabajadas != NULL)
+    if(this != NULL && horasTrabajadas >=0)
     {
         *horasTrabajadas = this->horasTrabajadas;
         todoOk = 1;

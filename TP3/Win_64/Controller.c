@@ -61,44 +61,6 @@ int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee,int tam
     fclose(f);
     return todoOk;
 }
-int controller_autoIncId(LinkedList* pArrayListEmployee)
-{
-    Employee* pEmp;
-    pEmp = employee_new();
-    int len;
-    int id = 0;
-    int auxId;
-    int prevId;
-
-    if(pArrayListEmployee != NULL)
-    {
-        len = ll_len(pArrayListEmployee);
-        if(len > 0)
-        {
-            for(int i = 0; i<len ; i++)
-            {
-                pEmp = (Employee*)ll_get(pArrayListEmployee,i);
-                employee_getId(pEmp,&auxId);
-                if(auxId > id)
-                {
-                    prevId = id;
-                    id = auxId;
-                    if(prevId + 1 != id)
-                    {
-                        id = prevId;
-                    }
-                }
-                id++;
-            }
-        }
-        else
-        {
-            id = 1;
-        }
-    }
-
-    return id;
-}
 
 /** \brief Alta de empleados
  *
@@ -109,40 +71,54 @@ int controller_autoIncId(LinkedList* pArrayListEmployee)
  */
 int controller_addEmployee(LinkedList* pArrayListEmployee)
 {
-    Employee* pEmp;
-    int todoOk = 1;
-    int id;
+    Employee* pEmp = employee_new();
+    Employee* pEmpAux = employee_new();
+    int todoOk = 0;
+    int i;
+    int idMax = 0;
     int auxSueldoInt;
     int auxHorasInt;
-    char auxNombre[100];
-    char auxHoras[50];
-    char auxSueldo[50];
+    char* auxNombre = (char*)malloc(sizeof(char)*100);
+    char* auxHoras = (char*)malloc(sizeof(char)*50);
+    char* auxSueldo =(char*)malloc(sizeof(char)*50);
+
+    for(i=0 ; i<ll_len(pArrayListEmployee); i++)
+    {
+        pEmpAux = (Employee*)ll_get(pArrayListEmployee,i);
+        if(pEmpAux->id>idMax)
+        {
+            idMax = pEmpAux->id;
+        }
+    }
 
     if(pArrayListEmployee != NULL)
     {
-        id = controller_autoIncId(pArrayListEmployee);
+
         while(!getStringLetras("ingrese el nombre del empleado:\n",auxNombre))
         {
             printf("intente de nuevo...\n");
         }
+        fflush(stdin);
         while(!getStringNumeros("ingrese el sueldo del empleado:\n",auxSueldo))
         {
             printf("intente de nuevo...\n");
         }
-        auxSueldoInt = atoi(auxSueldo);
         while(!getStringNumeros("ingrese la cantidad de horas trabajadas por el empleado:\n",auxHoras))
         {
             printf("intente de nuevo...\n");
         }
+        auxSueldoInt = atoi(auxSueldo);
         auxHorasInt = atoi(auxHoras);
         if( pEmp != NULL)
         {
-            employee_setId(pEmp,id);
+            employee_setId(pEmp,idMax);
             employee_setNombre(pEmp,auxNombre);
             employee_setSueldo(pEmp,auxSueldoInt);
             employee_setHorasTrabajadas(pEmp,auxHorasInt);
-            todoOk = 0;
+            ll_add(pArrayListEmployee,pEmp);
+            todoOk = 1;
         }
+        printf("alta de empleado exitosa!!!\n\n");
     }
     return todoOk;
 }
@@ -158,6 +134,7 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
 {
     Employee* pEmp;
     int todoOk = 1;
+    int i;
     char auxOption[50];
     int option;
     char respuesta = 's';
@@ -178,7 +155,7 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
             printf("intente de nuevo...\n");
         }
         Id = atoi(auxId);
-        for(int i = 0; i<ll_len(pArrayListEmployee); i++)
+        for(i = 0; i<ll_len(pArrayListEmployee); i++)
         {
             pEmp = ll_get(pArrayListEmployee,i);
             employee_getId(pEmp,&idingresado);
@@ -255,9 +232,44 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_removeEmployee(LinkedList* pArrayListEmployee)
 {
-    Employee* pEmp;
-    int todoOk;
+    Employee* pEmp = employee_new();
+    int id;
+    int i;
+    char* respuesta;
+    char* auxId = (char*)malloc(sizeof(char));
+    int flag = 0;
 
+    while(!getStringNumeros("ingrese el id del empleado a dar de baja\n",auxId))
+    {
+        printf("intente de nuevo...\n");
+    }
+    id = atoi(auxId);
+    for(i=0 ; i<ll_len(pArrayListEmployee); i++)
+    {
+        pEmp = (Employee*)ll_get(pArrayListEmployee,i);
+        if(pEmp->id == id)
+        {
+            pEmp = ll_get(pArrayListEmployee,i);
+            flag = 1;
+            break;
+        }
+    }
+    if(flag == 1)
+    {
+        printf("usted ha seleccionado al empleado: \n");
+        printf("Id   Nombre   Horas Trabajadas   Sueldo \n");
+        printf("%d  %10s  %10d   %10d\n",pEmp->id,pEmp->nombre,pEmp->horasTrabajadas,pEmp->sueldo);
+    }
+    printf("desea continuar con la baja?: (s/n)\n");
+    fflush(stdin);
+    respuesta = getche();
+    printf("\n");
+    if(respuesta == 's')
+    {
+        ll_remove(pArrayListEmployee,i);
+
+        printf("baja de empleado exitosa!!!\n");
+    }
     return 1;
 }
 
@@ -273,22 +285,17 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
     Employee* pEmp = employee_new();
     int tam;
     int todoOk = 1;
-    int id;
-    int sueldo;
-    int horas;
-    char nombre[100];
+    int i;
     tam = ll_len(pArrayListEmployee);
+
+    printf("\ntamaño :%d\n",tam);
     if(pArrayListEmployee != NULL)
     {
-        printf("id,name,hours worked,salary\n");
-        for(int i = 0; i<tam; i++)
+        printf("id   -   name   -    hours worked    -   salary\n");
+        for( i = 0; i<tam; i++)
         {
-            pEmp = ll_get(pArrayListEmployee,i);
-            employee_getId(pEmp,&id);
-            employee_getNombre(pEmp,nombre);
-            employee_getHorasTrabajadas(pEmp,&horas);
-            employee_getSueldo(pEmp,&sueldo);
-            printf("%d,- %10s - %10d - %10d\n\n",id,nombre,horas,sueldo);
+            pEmp =(Employee*)ll_get(pArrayListEmployee,i);
+            printf("%d %10s %10d  %10d\n",pEmp->id,pEmp->nombre,pEmp->horasTrabajadas,pEmp->sueldo);
         }
         todoOk = 0;
     }
@@ -319,16 +326,8 @@ int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
     FILE* f;
     Employee* pEmp;
     int todoOk = 0;
-    int* auxId;
-    char* auxNombre;
-    int* auxSueldo;
-    int* auxHoras;
-    char ext[] = ".csv";
-    char nombreArchivo[100];
-
-    strcpy(nombreArchivo,path);
-    strcat(nombreArchivo,ext);
-
+    int i;
+    f = fopen(path,"w");
 
     if(pArrayListEmployee == NULL && path == NULL)
     {
@@ -337,25 +336,12 @@ int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
     }
     else
     {
-        f = fopen(nombreArchivo,"r");
-        auxId = malloc(sizeof(int));
-        auxNombre = malloc(sizeof(char));
-        auxHoras = malloc(sizeof(int));
-        auxSueldo = malloc(sizeof(int));
-        fprintf(f,"Id              Full_Name            Hours Worked           Salary \n");
-        for(int i=0 ; i<ll_len(pArrayListEmployee) ; i++)
+        for(i=0 ; i<ll_len(pArrayListEmployee) ; i++)
         {
+            pEmp = employee_new();
             pEmp = ll_get(pArrayListEmployee, i);
-            employee_getId(pEmp,auxId);
-            employee_getNombre(pEmp,auxNombre);
-            employee_getHorasTrabajadas(pEmp,auxHoras);
-            employee_getSueldo(pEmp,auxSueldo);
-            fprintf(f,"%d,%s,%d,%d",*auxId,*auxNombre,*auxHoras,*auxSueldo);
+            fprintf(f,"%d,%s,%d,%d\n",pEmp->id,pEmp->nombre,pEmp->horasTrabajadas,pEmp->sueldo);
         }
-        free(auxId);
-        free(auxNombre);
-        free(auxHoras);
-        free(auxSueldo);
         fclose(f);
     }
     return todoOk;
@@ -372,12 +358,9 @@ int controller_saveAsBinary(char* path, LinkedList* pArrayListEmployee)
 {
     FILE* f;
     Employee* pEmp;
+    int i;
     int todoOk = -1;
-    char ext[] = ".csv";
-    char nombreArchivo[100];
-    strcpy(nombreArchivo,path);
-    strcat(nombreArchivo,ext);
-    f = fopen(nombreArchivo,"wb");
+    f = fopen(path,"wb");
     if(pArrayListEmployee == NULL && path == NULL )
     {
         printf("no se pudo abrir el archivo...\n");
@@ -386,7 +369,7 @@ int controller_saveAsBinary(char* path, LinkedList* pArrayListEmployee)
     else
     {
         f = fopen(path,"wb");
-        for(int i=0 ; i<ll_len(pArrayListEmployee) ; i++)
+        for(i=0 ; i<ll_len(pArrayListEmployee) ; i++)
         {
             pEmp = (Employee*)ll_get(pArrayListEmployee,i);
             fwrite(pEmp,sizeof(Employee),1,f);
