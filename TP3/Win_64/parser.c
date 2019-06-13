@@ -31,7 +31,10 @@ int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
             pEmp = employee_new();
             fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",auxId,auxNombre,auxHoras,auxSueldo);
             pEmp = employee_newParametros(auxId,auxNombre,auxHoras,auxSueldo);
-
+            if(feof(pFile))
+            {
+                break;
+            }
             if(pEmp !=NULL)
             {
                 ll_add(pArrayListEmployee,pEmp);
@@ -54,7 +57,7 @@ int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
 int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee)
 {
     Employee* pEmp;
-    int todoOk = 1;
+    int todoOk = 0;
     if(pFile == NULL)
     {
         printf("error, no se pudo abrir el archivo...\n");
@@ -64,9 +67,13 @@ int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee)
         while(!feof(pFile)){
             pEmp = employee_new();
             fread(pEmp,sizeof(Employee),1,pFile);
+            if(feof(pFile))
+            {
+                break;
+            }
             ll_add(pArrayListEmployee,pEmp);
         }
-        todoOk = 0;
+        todoOk = 1;
     }
     return todoOk;
 }

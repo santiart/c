@@ -24,7 +24,11 @@ int main()
 {
     int option = 0;
     char auxOption[50];
+    int flagT = 0;
+    int flagB = 0;
     LinkedList* listaEmpleados = ll_newLinkedList();
+    int flagCargaT = 0;
+    int flagCargaB = 0;
     do{
             printf("              :: A B M   E M P L E A D O S ::                     \n");
             printf("1_Cargar empleados desde texto  2_Cargar empleados desde binario  \n");
@@ -40,31 +44,83 @@ int main()
         switch(option)
         {
             case 1:
-
-                controller_loadFromText("data.csv",listaEmpleados);
+                if(flagT == 0)
+                {
+                    controller_loadFromText("data.csv",listaEmpleados);
+                    flagT = 1;
+                    flagCargaT = 1;
+                }
+                else
+                {
+                    printf("el archivo ya se ha abierto antes...\n");
+                }
                 break;
             case 2:
-                controller_loadFromBinary("data.csv",listaEmpleados);
+                if(flagB == 0)
+                {
+                    controller_loadFromBinary("data.bin",listaEmpleados);
+                    flagB = 1;
+                    flagCargaB = 1;
+                }
+                else
+                {
+                    printf("el archivo ya se ha abierto antes...\n");
+                }
                 break;
             case 3:
-                controller_addEmployee(listaEmpleados);
+                if(flagCargaT == 1 || flagCargaB == 1)
+                {
+                    controller_addEmployee(listaEmpleados);
+                }
+                else
+                {
+                    printf("cargue el archivo antes de dar de alta...\n");
+                }
                 break;
             case 4:
-                controller_editEmployee(listaEmpleados);
+                if(flagCargaT == 1 || flagCargaB == 1)
+                {
+                    controller_editEmployee(listaEmpleados);
+                }
+                else
+                {
+                    printf("debe ingresar a los empleados primero...\n");
+                }
                 break;
             case 5:
-                controller_removeEmployee(listaEmpleados);
+                if(flagCargaT == 1 || flagCargaB == 1)
+                {
+                    controller_removeEmployee(listaEmpleados);
+                }
+                else
+                {
+                    printf("debe ingresar empleados primero...\n");
+                }
                 break;
             case 6:
-                controller_ListEmployee(listaEmpleados);
+                if(flagCargaT == 1 || flagCargaB == 1)
+                {
+                    controller_ListEmployee(listaEmpleados);
+                }
+                else
+                {
+                    printf("primero debe ingresar a los empleados...\n");
+                }
                 break;
             case 7:
-                controller_sortEmployee(listaEmpleados);
+                if(flagCargaT == 1 || flagCargaB == 1)
+                {
+                    controller_sortEmployee(listaEmpleados);
+                }
+                else
+                {
+                    printf("primero debe ingresar a los empleados...\n");
+                }
             case 8:
                 controller_saveAsText("data.csv",listaEmpleados);
                 break;
             case 9:
-                controller_saveAsBinary("data,csv",listaEmpleados);
+                controller_saveAsBinary("data,bin",listaEmpleados);
                 break;
             case 10:
             printf("hasta luego\n");

@@ -44,7 +44,7 @@ int controller_loadFromText(char* path, LinkedList* pArrayListEmployee)
 int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee,int tam)
 {
     FILE* f;
-    int todoOk = 1;
+    int todoOk = 0;
 
     f = fopen(path,"rb");
     if(f == NULL)
@@ -55,7 +55,7 @@ int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee,int tam
     else
     {
         parser_EmployeeFromBinary(f,pArrayListEmployee);
-        todoOk = 0;
+        todoOk = 1;
     }
     printf("craga binaria de empleados exitosa!!!\n");
     fclose(f);
@@ -138,8 +138,6 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
     char* auxOption = (char*)malloc(sizeof(char));
     int option;
     int flag = 0;
-    char respuesta = 's';
-    char confirmar;
     int Id;
     char* auxId = (char*)malloc(sizeof(char));
     int Sueldo;
@@ -244,7 +242,7 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
     Employee* pEmp = employee_new();
     int id;
     int i;
-    char* respuesta;
+    char respuesta;
     char* auxId = (char*)malloc(sizeof(char));
     int flag = 0;
 
@@ -320,6 +318,38 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_sortEmployee(LinkedList* pArrayListEmployee)
 {
+    void* pVoid1;
+    void* pVoid2;
+    char* auxOption =(char*)malloc(sizeof(char));
+    int option;
+    int todoOk = 0;
+    int id1;
+    int id2;
+    int hours1;
+    int hours2;
+    int salary1;
+    int salary2;
+    do
+    {
+        printf("   :: ORDENAR::              \n");
+        printf("1_Por nombre   2_Por id      \n");
+        printf("3_Por sueldo   4_Porn sueldo \n");
+        printf("5_Salir...                   \n");
+
+        while(!getStringNumeros("ingrese una opcion: \n",auxOption))
+        {
+            printf("intente de nuevo...\n");
+        }
+        option = atoi(auxOption);
+        switch(option)
+        {
+            case 1:
+                ll_sort(pArrayListEmployee,employee_sortName,1);
+                break;
+
+        }
+    }while(option != 5);
+
     return 1;
 }
 
@@ -370,19 +400,20 @@ int controller_saveAsBinary(char* path, LinkedList* pArrayListEmployee)
     int i;
     int todoOk = -1;
     f = fopen(path,"wb");
-    if(pArrayListEmployee == NULL && path == NULL )
+    if(pArrayListEmployee == NULL)
     {
         printf("no se pudo abrir el archivo...\n");
         exit(EXIT_FAILURE);
     }
     else
     {
-        f = fopen(path,"wb");
+        //f = fopen(path,"wb");
         for(i=0 ; i<ll_len(pArrayListEmployee) ; i++)
         {
             pEmp = (Employee*)ll_get(pArrayListEmployee,i);
             fwrite(pEmp,sizeof(Employee),1,f);
         }
+
         fclose(f);
     }
     return todoOk;

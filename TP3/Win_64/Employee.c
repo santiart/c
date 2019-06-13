@@ -16,7 +16,8 @@ Employee* employee_new()
     }
     return nuevoEmpleado;
 }
-Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr,char* sueldoStr){
+Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr,char* sueldoStr)
+{
 
     Employee* nuevoEmpleado = employee_new();
     int todoOk = 1;
@@ -45,7 +46,8 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajad
     }
     return nuevoEmpleado;
 }
-int employee_setId(Employee* this,int id){
+int employee_setId(Employee* this,int id)
+{
 
     int todoOk = 0;
     if(this != NULL && id >= 0)
@@ -55,7 +57,8 @@ int employee_setId(Employee* this,int id){
     }
     return todoOk;
 }
-int employee_getId(Employee* this,int* id){
+int employee_getId(Employee* this,int* id)
+{
 
     int todoOk = 0;
     if(this != NULL && id != NULL)
@@ -65,19 +68,23 @@ int employee_getId(Employee* this,int* id){
     }
     return todoOk;
 }
-int employee_setNombre(Employee* this,char* nombre){
+int employee_setNombre(Employee* this,char* nombre)
+{
 
     int todoOk = 0;
-    if(this != NULL && strlen(nombre)>2){
+    if(this != NULL && strlen(nombre)>2)
+    {
         strcpy(this->nombre,nombre);
         todoOk = 1;
     }
     return todoOk;
 }
-int employee_getNombre(Employee* this,char* nombre){
+int employee_getNombre(Employee* this,char* nombre)
+{
 
     int todoOk = 0;
-    if(this != NULL && *nombre != NULL){
+    if(this != NULL && *nombre != NULL)
+    {
         strcpy(nombre,this->nombre);
         todoOk = 1;
     }
@@ -123,6 +130,25 @@ int employee_getHorasTrabajadas(Employee* this,int* horasTrabajadas)
     {
         *horasTrabajadas = this->horasTrabajadas;
         todoOk = 1;
+    }
+    return todoOk;
+}
+
+int employee_sortName(void* pVoid1, void* pVoid2)
+{
+    char* name1 = (char*)malloc(sizeof(char));
+    char* name2 = (char*)malloc(sizeof(char));
+    int todoOk = 0;
+    employee_getNombre(pVoid1,name1);
+    employee_getNombre(pVoid2,name2);
+
+    if(strcmp(name1,name2)>0)
+    {
+        todoOk = 1;
+    }
+    else
+    {
+        todoOk = 0;
     }
     return todoOk;
 }
