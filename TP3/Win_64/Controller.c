@@ -17,7 +17,7 @@
 int controller_loadFromText(char* path, LinkedList* pArrayListEmployee)
 {
     FILE* f;
-    int todoOK = 1;
+    int todoOK = 0;
     f = fopen(path,"r");
     if(f == NULL)
     {
@@ -27,10 +27,10 @@ int controller_loadFromText(char* path, LinkedList* pArrayListEmployee)
     else
     {
         parser_EmployeeFromText(f,pArrayListEmployee);
-        todoOK = 0;
+        todoOK = 1;
+        fclose(f);
 
     }
-    fclose(f);
     return todoOK;
 }
 
@@ -41,10 +41,11 @@ int controller_loadFromText(char* path, LinkedList* pArrayListEmployee)
  * \return int
  *
  */
-int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee,int tam)
+int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee)
 {
     FILE* f;
     int todoOk = 0;
+    int tam;
 
     f = fopen(path,"rb");
     if(f == NULL)
@@ -55,7 +56,6 @@ int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee,int tam
     else
     {
         parser_EmployeeFromBinary(f,pArrayListEmployee);
-        todoOk = 1;
     }
     printf("craga binaria de empleados exitosa!!!\n");
     fclose(f);
@@ -289,19 +289,17 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_ListEmployee(LinkedList* pArrayListEmployee)
 {
-    Employee* pEmp = employee_new();
     int tam;
     int todoOk = 1;
     int i;
     tam = ll_len(pArrayListEmployee);
 
-    printf("\ntamaño :%d\n",tam);
     if(pArrayListEmployee != NULL)
     {
-        printf("id   -   name   -    hours worked    -   salary\n");
+        printf("id   -   name - hours worked  - salary\n");
         for( i = 0; i<tam; i++)
         {
-            pEmp =(Employee*)ll_get(pArrayListEmployee,i);
+            Employee* pEmp =(Employee*)ll_get(pArrayListEmployee,i);
             printf("%d %10s %10d  %10d\n",pEmp->id,pEmp->nombre,pEmp->horasTrabajadas,pEmp->sueldo);
         }
         todoOk = 0;
@@ -368,7 +366,7 @@ int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
     int i;
     f = fopen(path,"w");
 
-    if(pArrayListEmployee == NULL && path == NULL)
+    if(pArrayListEmployee == NULL)
     {
         printf("no se pudo abrir el archivo...\n");
         exit(EXIT_FAILURE);

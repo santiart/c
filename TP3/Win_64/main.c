@@ -24,11 +24,9 @@ int main()
 {
     int option = 0;
     char auxOption[50];
-    int flagT = 0;
-    int flagB = 0;
+    int flag = 0;
     LinkedList* listaEmpleados = ll_newLinkedList();
-    int flagCargaT = 0;
-    int flagCargaB = 0;
+
     do{
             printf("              :: A B M   E M P L E A D O S ::                     \n");
             printf("1_Cargar empleados desde texto  2_Cargar empleados desde binario  \n");
@@ -44,11 +42,10 @@ int main()
         switch(option)
         {
             case 1:
-                if(flagT == 0)
+                if(flag == 0)
                 {
                     controller_loadFromText("data.csv",listaEmpleados);
-                    flagT = 1;
-                    flagCargaT = 1;
+                    flag = 1;
                 }
                 else
                 {
@@ -56,11 +53,10 @@ int main()
                 }
                 break;
             case 2:
-                if(flagB == 0)
+                if(flag == 0)
                 {
                     controller_loadFromBinary("data.bin",listaEmpleados);
-                    flagB = 1;
-                    flagCargaB = 1;
+                    flag = 1;
                 }
                 else
                 {
@@ -68,7 +64,7 @@ int main()
                 }
                 break;
             case 3:
-                if(flagCargaT == 1 || flagCargaB == 1)
+                if(flag == 1)
                 {
                     controller_addEmployee(listaEmpleados);
                 }
@@ -78,7 +74,7 @@ int main()
                 }
                 break;
             case 4:
-                if(flagCargaT == 1 || flagCargaB == 1)
+                if(flag == 1)
                 {
                     controller_editEmployee(listaEmpleados);
                 }
@@ -88,7 +84,7 @@ int main()
                 }
                 break;
             case 5:
-                if(flagCargaT == 1 || flagCargaB == 1)
+                if(flag == 1)
                 {
                     controller_removeEmployee(listaEmpleados);
                 }
@@ -98,7 +94,7 @@ int main()
                 }
                 break;
             case 6:
-                if(flagCargaT == 1 || flagCargaB == 1)
+                if(flag == 1)
                 {
                     controller_ListEmployee(listaEmpleados);
                 }
@@ -108,7 +104,7 @@ int main()
                 }
                 break;
             case 7:
-                if(flagCargaT == 1 || flagCargaB == 1)
+                if(flag == 1)
                 {
                     controller_sortEmployee(listaEmpleados);
                 }
@@ -120,7 +116,7 @@ int main()
                 controller_saveAsText("data.csv",listaEmpleados);
                 break;
             case 9:
-                controller_saveAsBinary("data,bin",listaEmpleados);
+                controller_saveAsBinary("data.bin",listaEmpleados);
                 break;
             case 10:
             printf("hasta luego\n");
