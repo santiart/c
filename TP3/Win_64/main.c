@@ -46,6 +46,7 @@ int main()
                 {
                     controller_loadFromText("data.csv",listaEmpleados);
                     flag = 1;
+                    break;
                 }
                 else
                 {
@@ -57,6 +58,7 @@ int main()
                 {
                     controller_loadFromBinary("data.bin",listaEmpleados);
                     flag = 1;
+                    break;
                 }
                 else
                 {
@@ -67,6 +69,7 @@ int main()
                 if(flag == 1)
                 {
                     controller_addEmployee(listaEmpleados);
+                    break;
                 }
                 else
                 {
@@ -77,6 +80,7 @@ int main()
                 if(flag == 1)
                 {
                     controller_editEmployee(listaEmpleados);
+                    break;
                 }
                 else
                 {
@@ -87,6 +91,7 @@ int main()
                 if(flag == 1)
                 {
                     controller_removeEmployee(listaEmpleados);
+                    break;
                 }
                 else
                 {
@@ -97,6 +102,7 @@ int main()
                 if(flag == 1)
                 {
                     controller_ListEmployee(listaEmpleados);
+                    break;
                 }
                 else
                 {
@@ -107,16 +113,34 @@ int main()
                 if(flag == 1)
                 {
                     controller_sortEmployee(listaEmpleados);
+                    break;
                 }
                 else
                 {
                     printf("primero debe ingresar a los empleados...\n");
                 }
+                break;
             case 8:
-                controller_saveAsText("data.csv",listaEmpleados);
+                if(flag == 1)
+                {
+                    controller_saveAsText("data.csv",listaEmpleados);
+                    break;
+                }
+                else
+                {
+                    printf("primero debe ingresar a los empleados...\n");
+                }
                 break;
             case 9:
-                controller_saveAsBinary("data.bin",listaEmpleados);
+                if(flag == 1)
+                {
+                    controller_saveAsBinary("data.bin",listaEmpleados);
+                    break;
+                }
+                else
+                {
+                    printf("primero debe ingresar a los empleados...\n");
+                }
                 break;
             case 10:
             printf("hasta luego\n");
