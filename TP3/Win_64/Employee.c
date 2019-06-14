@@ -83,7 +83,7 @@ int employee_getNombre(Employee* this,char* nombre)
 {
 
     int todoOk = 0;
-    if(this != NULL && *nombre != NULL)
+    if(this != NULL && nombre != NULL)
     {
         strcpy(nombre,this->nombre);
         todoOk = 1;
@@ -146,9 +146,41 @@ int employee_sortName(void* pVoid1, void* pVoid2)
     {
         todoOk = 1;
     }
-    else
+    return todoOk;
+}
+
+int employee_sortSalary(void* pVoid1, void* pVoid2)
+{
+    int salary1,salary2,todoOk;
+    employee_getSueldo(pVoid1,&salary1);
+    employee_getSueldo(pVoid2,&salary2);
+    if(salary1>salary2)
     {
-        todoOk = 0;
+        todoOk = 1;
+    }
+    return todoOk;
+}
+
+int employee_sortHours(void* pVoid1,void* pVoid2)
+{
+    int hours1,hours2,todoOk;
+    employee_getHorasTrabajadas(pVoid1,&hours1);
+    employee_getHorasTrabajadas(pVoid2,&hours2);
+    if(hours1>hours2)
+    {
+        todoOk = 1;
+    }
+    return todoOk;
+}
+
+int employee_sortId(void* pVoid1,void* pVoid2)
+{
+    int Id1,Id2,todoOk;
+    employee_getId(pVoid1,&Id1);
+    employee_getId(pVoid2,&Id2);
+    if(Id1>Id2)
+    {
+        todoOk = 1;
     }
     return todoOk;
 }
