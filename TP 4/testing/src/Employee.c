@@ -15,10 +15,31 @@ int compareEmployee(void* pEmployeeA,void* pEmployeeB)
         return -1;
     }
     return 0;
-
-
 }
-
+int compareEmployee2(void* pEmployeeA,void* pEmployeeB)
+{
+    if(((Employee*)pEmployeeA)->sector > ((Employee*)pEmployeeB)->sector)
+    {
+        return 1;
+    }
+    if(((Employee*)pEmployeeA)->sector < ((Employee*)pEmployeeB)->sector)
+    {
+        return -1;
+    }
+    return 0;
+}
+int compareEmployee3(void* pEmployeeA,void* pEmployeeB)
+{
+        if(strcmp((((Employee*)pEmployeeA)->name),(((Employee*)pEmployeeB)->name)) >= 1)
+    {
+        return 1;
+    }
+    if(strcmp((((Employee*)pEmployeeA)->name),(((Employee*)pEmployeeB)->name)) <=1)
+    {
+        return -1;
+    }
+    return 0;
+}
 void printEmployee(Employee* p)
 {
     printf("Nombre:%s Salario:%.2f\r\n",p->name,p->salary);

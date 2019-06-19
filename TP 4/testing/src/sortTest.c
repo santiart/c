@@ -128,7 +128,7 @@ void sortTestCase05(void)
         pAux[i] = newEmployee(id[i],unsortedList[i],unsortedList[i],salary[i],sector[i]);
         ll_add(list,pAux[i]);
     }
-    r = ll_sort(list, compareEmployee,-1);
+    r = ll_sort(list, compareEmployee3,-1);
     utest_assertEqualsIntMsg(r,-1,"\nError en el valor de retorno de <sort> si el orden es distinto de 1 o 0\n la funcion sort retorna -1\n");
 
 }
